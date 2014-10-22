@@ -1,0 +1,98 @@
+#summary Proyecto llevado a cabo por The Smarter Tech.
+¡¡Atención!! Importante: Se recomienda la visualización de los documentos pdf a través de Firefox o Safari, es posible que desde otro navegador no se visualicen de manera correcta.
+
+https://the-smarter-tech.googlecode.com/svn/wiki/logo_small.png
+= Actas =
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Acta01.pdf" rel="nofollow">Acta1</a>
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Acta02.pdf" rel="nofollow">Acta2</a>
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Acta03.pdf" rel="nofollow">Acta3</a>
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Acta04.pdf" rel="nofollow">Acta4</a>
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Acta05.pdf" rel="nofollow">Acta5</a>
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Acta06.pdf" rel="nofollow">Acta6</a>
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Acta07.pdf" rel="nofollow">Acta7</a>
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Acta08.pdf" rel="nofollow">Acta8</a>
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Acta09.pdf" rel="nofollow">Acta9</a>
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Acta10.pdf" rel="nofollow">Acta10</a>
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Acta11.pdf" rel="nofollow">Acta11</a>
+
+= Especificación de los requisitos =
+Documento donde se encuentra la especificación de requisitos: <a href="https://the-smarter-tech.googlecode.com/svn/wiki/EspecificaciónRequisitosIEE830.pdf" rel="nofollow">Requisitos</a>
+
+
+= Planificación y Costes =
+Documento donde se encuentra la planificación: <a href="https://the-smarter-tech.googlecode.com/svn/wiki/PlanificacionFinal%20v2.pdf" rel="nofollow">Planificación</a>
+
+-------------------------------------------------------------------
+
+=Iteraciones=
+
+
+==Iteración 1: Análisis y diseño del REQ04 Gestión de usuarios==
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Iteraciones/Iteracion1.pdf" rel="nofollow">Documentación Iteracion 1</a>
+
+<a href="https://the-smarter-tech.googlecode.com/svn/trunk/FindPersonsVPP1/Iter11.vpp" rel="nofollow">Diagramas Iteracion 1</a>
+
+==Iteración 2:Implementación y pruebas del REQ04 Gestión de usuarios==
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Iteraciones/Iter2_REQ04.zip" rel="nofollow">Código Fuente Iter2 REQ04</a>
+
+
+
+==Iteración 3: Análisis y diseño del REQ05 Gestión de personas en busca y captura y del REQ06 Gestión de personas desaparecidas==
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Iteraciones/Iteracion3.pdf" rel="nofollow">Documentación Iteracion 3</a>
+
+<a href="https://the-smarter-tech.googlecode.com/svn/trunk/FindPersonsVPP2/Iter33.vpp" rel="nofollow">Diagramas Iteracion 3</a>
+
+==Iteración 4:Implementación y pruebas del REQ05 Gestión de personas en busca y captura y del REQ06 Gestión de personas desaparecidas==
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Iteraciones/Iter4_%20REQ05_%20REQ06.zip" rel="nofollow">Código Fuente Iter4 REQ05 REQ06</a>
+
+
+==Iteración 5: Análisis y diseño del REQ07 Generación de fichero==
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Iteraciones/Iteracion5.pdf" rel="nofollow">Documentación Iteracion 5</a>
+
+<a href="https://the-smarter-tech.googlecode.com/svn/trunk/FindPersonsVPP3/Iter55.vpp" rel="nofollow">Diagramas Iteracion 5</a>
+
+==Iteración 6:Implementación y pruebas del REQ07 Generación de fichero y del proyecto final==
+
+<a href="https://the-smarter-tech.googlecode.com/svn/wiki/Iteraciones/Iter6_%20REQ07.zip" rel="nofollow">Código Fuente Iter6 REQ07</a>
+
+-------------------------------------------------------------------
+
+= Calidad =
+Estándar de calidad de la empresa: [https://sites.google.com/site/thesmartertechnologies/control-de-calidad Control de Calidad]
+
+Documento donde se encuentra las preguntas de evaluación:<a href="https://the-smarter-tech.googlecode.com/svn/wiki/PreguntasEvaluacionMadurez.pdf" rel="nofollow">Preguntas</a>
+
+Resultados: [https://sites.google.com/site/thesmartertechnologies/evaluacion-de-la-madurez Evaluación de la madurez]
+
+Mejoras de los procesos: [https://sites.google.com/site/thesmartertechnologies/mejoras-en-los-procesos Mejoras]
+
+= Plan de la Gestión de la Configuración del Software =
+Documento donde se encuentra el plan de gestión de la configuración:<a href="" rel="nofollow">Plan Gestión</a>
+
+= Plan de pruebas =
+Documento donde se encuentra el plan de pruebas:<a href="" rel="nofollow">Plan de pruebas</a>
+
+= Plan de mantenimiento =
+Documento donde se encuentra el plan de mantenimiento:<a href="" rel="nofollow">Plan de mantenimiento</a>
+
+= Manual SVN =
+Documento donde se encuentra el manual de SVN:<a href="" rel="nofollow">Manual Subversion</a>
+
+= Reparto de trabajo =
+Documento donde se encuentra los porcentajes de trabajo del grupo:<a href="" rel="nofollow">Porcentajes de trabajo</a>
+
