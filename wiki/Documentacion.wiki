@@ -1,41 +1,34 @@
-#summary Proyecto llevado a cabo por The Smarter Tech.
+#summary Proyecto llevado a cabo por Fagobytes Corp.
+#labels Phase-Design,Phase-Requirements,Phase-Implementation
 ¡¡Atención!! Importante: Se recomienda la visualización de los documentos pdf a través de Firefox o Safari, es posible que desde otro navegador no se visualicen de manera correcta.
 
 https://code.google.com/p/fagobytes-asociaciones/source/browse/wiki/imgs/logo.png
 
 = Actas =
 
-<a href="https://fagobytes-asociaciones.google.com/svn/wiki/Acta01.pdf" rel="nofollow">Acta01</a>
+<a href="https://docs.google.com/document/d/1cv02gxiULbWYCvzSuaCtTCSVp8Q5m1Nm0MUxSFc8N7E/edit?usp=sharing" rel="nofollow">Acta01</a>
 
-<a href="https://fagobytes-asociaciones.google.com/svn/wiki/Acta02.pdf" rel="nofollow">Acta02</a>
+<a href="https://docs.google.com/document/d/1mAGqU17YebfjaSbkTIzPLd2w9msYlJsEx6HoBV_VNSk/edit?usp=sharing" rel="nofollow">Acta02</a>
 
-<a href="https://fagobytes-asociaciones.google.com/svn/wiki/Acta03.pdf" rel="nofollow">Acta03</a>
+<a href="https://docs.google.com/document/d/1TNWYnxW3gdoJ8YvzbZeP8uyAmJD5kIUJ8UKienTh3Ec/edit?usp=sharing
+" rel="nofollow">Acta03</a>
 
-<a href="https://fagobytes-asociaciones.google.com/svn/wiki/Acta04.pdf" rel="nofollow">Acta04</a>
+<a href="https://docs.google.com/document/d/1Zt9SKmEUghe6Jah7adMGfEclLdaAwUuNwi1PpUtZuJI/edit?usp=sharing
+" rel="nofollow">Acta04</a>
 
-<a href="https://fagobytes-asociaciones.google.com/svn/wiki/Acta05.pdf" rel="nofollow">Acta05</a>
+<a href="https://docs.google.com/document/d/1yEUOZ20DfG56OwW7U_u5QFu09E0QuFDv1qgR4S6VxCg/edit?usp=sharing
+" rel="nofollow">Acta05</a>
 
-<a href="https://fagobytes-asociaciones.google.com/svn/wiki/Acta06.pdf" rel="nofollow">Acta06</a>
-
-<a href="https://fagobytes-asociaciones.google.com/svn/wiki/Acta07.pdf" rel="nofollow">Acta07</a>
-
-<a href="https://fagobytes-asociaciones.com/svn/wiki/Acta08.pdf" rel="nofollow">Acta08</a>
-
-<a href="https://fagobytes-asociaciones.com/svn/wiki/Acta09.pdf" rel="nofollow">Acta09</a>
-
-<a href="https://fagobytes-asociaciones.com/svn/wiki/Acta10.pdf" rel="nofollow">Acta10</a>
-
-<a href="https://fagobytes-asociaciones.com/svn/wiki/Acta11.pdf" rel="nofollow">Acta11</a>
-
+<!--
 = Especificación de los requisitos =
 Documento donde se encuentra la especificación de requisitos: <a href="" rel="nofollow">Requisitos</a>
 
 
 = Planificación y Costes =
 Documento donde se encuentra la planificación: <a href="" rel="nofollow">Planificación</a>
-
+-->
 -------------------------------------------------------------------
-
+<!--
 =Iteraciones=
 
 
@@ -72,6 +65,7 @@ Documento donde se encuentra la planificación: <a href="" rel="nofollow">Planif
 <a href="" rel="nofollow">Código Fuente Iter6 REQ07</a>
 
 -------------------------------------------------------------------
+-->
 
 = Calidad =
 Estándar de calidad de la empresa: ["página de control de calidad del site" Control de Calidad]
@@ -96,4 +90,3 @@ Documento donde se encuentra el manual de SVN:<a href="" rel="nofollow">Manual S
 
 = Reparto de trabajo =
 Documento donde se encuentra los porcentajes de trabajo del grupo:<a href="" rel="nofollow">Porcentajes de trabajo</a>
-
