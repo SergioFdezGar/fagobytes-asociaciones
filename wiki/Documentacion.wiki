@@ -6,87 +6,88 @@ https://code.google.com/p/fagobytes-asociaciones/source/browse/wiki/imgs/logo.pn
 
 = Actas =
 
-<a href="https://docs.google.com/document/d/1cv02gxiULbWYCvzSuaCtTCSVp8Q5m1Nm0MUxSFc8N7E/edit?usp=sharing" rel="nofollow">Acta01</a>
+<a href="https://docs.google.com/document/d/1cv02gxiULbWYCvzSuaCtTCSVp8Q5m1Nm0MUxSFc8N7E/edit?usp=sharing">Acta01</a>
 
-<a href="https://docs.google.com/document/d/1mAGqU17YebfjaSbkTIzPLd2w9msYlJsEx6HoBV_VNSk/edit?usp=sharing" rel="nofollow">Acta02</a>
+<a href="https://docs.google.com/document/d/1mAGqU17YebfjaSbkTIzPLd2w9msYlJsEx6HoBV_VNSk/edit?usp=sharing">Acta02</a>
 
-<a href="https://docs.google.com/document/d/1TNWYnxW3gdoJ8YvzbZeP8uyAmJD5kIUJ8UKienTh3Ec/edit?usp=sharing
-" rel="nofollow">Acta03</a>
+<a href="https://docs.google.com/document/d/1TNWYnxW3gdoJ8YvzbZeP8uyAmJD5kIUJ8UKienTh3Ec/edit?usp=sharing">Acta03</a>
 
-<a href="https://docs.google.com/document/d/1Zt9SKmEUghe6Jah7adMGfEclLdaAwUuNwi1PpUtZuJI/edit?usp=sharing
-" rel="nofollow">Acta04</a>
+<a href="https://docs.google.com/document/d/1Zt9SKmEUghe6Jah7adMGfEclLdaAwUuNwi1PpUtZuJI/edit?usp=sharing">Acta04</a>
 
-<a href="https://docs.google.com/document/d/1yEUOZ20DfG56OwW7U_u5QFu09E0QuFDv1qgR4S6VxCg/edit?usp=sharing
-" rel="nofollow">Acta05</a>
+<a href="https://docs.google.com/document/d/1yEUOZ20DfG56OwW7U_u5QFu09E0QuFDv1qgR4S6VxCg/edit?usp=sharing">Acta05</a>
 
-<!--
+
 = Especificación de los requisitos =
-Documento donde se encuentra la especificación de requisitos: <a href="" rel="nofollow">Requisitos</a>
+Documento donde se encuentra la especificación de requisitos: <a href="">Requisitos</a>
 
 
 = Planificación y Costes =
-Documento donde se encuentra la planificación: <a href="" rel="nofollow">Planificación</a>
--->
+Documento donde se encuentra la planificación: <a href="">Planificación</a>
+
 -------------------------------------------------------------------
-<!--
+
 =Iteraciones=
 
 
-==Iteración 1: Análisis y diseño del REQ04 Gestión de usuarios==
+==Iteración 1: Análisis y diseño del REQX Gestión de usuarios==
 
-<a href="" rel="nofollow">Documentación Iteracion 1</a>
+<a href="">Documentación Iteracion 1</a>
 
-<a href="" rel="nofollow">Diagramas Iteracion 1</a>
+<a href="">Diagramas Iteracion 1</a>
 
-==Iteración 2:Implementación y pruebas del REQ04 Gestión de usuarios==
+==Iteración 2:Implementación y pruebas del REQX Gestión de usuarios==
 
-<a href="" rel="nofollow">Código Fuente Iter2 REQ04</a>
+<a href="" >Código Fuente Iter2 REQX</a>
 
 
 
-==Iteración 3: Análisis y diseño del REQ05 Gestión de personas en busca y captura y del REQ06 Gestión de personas desaparecidas==
-<a href="" rel="nofollow">Documentación Iteracion 3</a>
+==Iteración 3: Análisis y diseño del REQX Gestión de personas en busca y captura y del REQX Gestión de personas desaparecidas==
+<a href="">Documentación Iteracion 3</a>
 
-<a href="" rel="nofollow">Diagramas Iteracion 3</a>
+<a href="">Diagramas Iteracion 3</a>
 
 ==Iteración 4:Implementación y pruebas del REQ05 Gestión de personas en busca y captura y del REQ06 Gestión de personas desaparecidas==
 
-<a href="" rel="nofollow">Código Fuente Iter4 REQ05 REQ06</a>
+<a href="">Código Fuente Iter4 REQX REQX</a>
 
 
-==Iteración 5: Análisis y diseño del REQ07 Generación de fichero==
+==Iteración 5: Análisis y diseño del REQX Generación de fichero==
 
-<a href="" rel="nofollow">Documentación Iteracion 5</a>
+<a href="">Documentación Iteracion 5</a>
 
-<a href="" rel="nofollow">Diagramas Iteracion 5</a>
+<a href="">Diagramas Iteracion 5</a>
 
-==Iteración 6:Implementación y pruebas del REQ07 Generación de fichero y del proyecto final==
+==Iteración 6:Implementación y pruebas del REQX Generación de fichero y del proyecto final==
 
-<a href="" rel="nofollow">Código Fuente Iter6 REQ07</a>
+<a href="">Código Fuente Iter6 REQX</a>
 
 -------------------------------------------------------------------
--->
 
 = Calidad =
-Estándar de calidad de la empresa: ["página de control de calidad del site" Control de Calidad]
+Estándar de calidad de la empresa: [https://sites.google.com/site/fagobytes/nosotros/calidad Control de Calidad]
 
-Documento donde se encuentra las preguntas de evaluación:<a href="" rel="nofollow">Preguntas</a>
+Documento donde se encuentra las preguntas de evaluación:<a href="">Preguntas</a>
 
-Resultados: ["página de evaluacion-de-la-madurez" Evaluación de la madurez]
+Resultados: [https://sites.google.com/site/fagobytes/proyectos/asobu Evaluación de la madurez]
 
+<wiki:comment>
 Mejoras de los procesos: ["página de mejoras en los procesos" Mejoras]
 
+
 = Plan de la Gestión de la Configuración del Software =
-Documento donde se encuentra el plan de gestión de la configuración:<a href="" rel="nofollow">Plan Gestión</a>
+Documento donde se encuentra el plan de gestión de la configuración:<a href="">Plan Gestión</a>
 
 = Plan de pruebas =
-Documento donde se encuentra el plan de pruebas:<a href="" rel="nofollow">Plan de pruebas</a>
+Documento donde se encuentra el plan de pruebas:<a href="">Plan de pruebas</a>
 
 = Plan de mantenimiento =
-Documento donde se encuentra el plan de mantenimiento:<a href="" rel="nofollow">Plan de mantenimiento</a>
+Documento donde se encuentra el plan de mantenimiento:<a href="">Plan de mantenimiento</a>
+</wiki:comment>
 
 = Manual SVN =
-Documento donde se encuentra el manual de SVN:<a href="" rel="nofollow">Manual Subversion</a>
+Documento donde se encuentra el manual de SVN:<a href="">Manual Subversion</a>
 
+<wiki:comment>
 = Reparto de trabajo =
-Documento donde se encuentra los porcentajes de trabajo del grupo:<a href="" rel="nofollow">Porcentajes de trabajo</a>
+Documento donde se encuentra los porcentajes de trabajo del grupo:<a href="">Porcentajes de trabajo</a>
+</wiki:comment>
