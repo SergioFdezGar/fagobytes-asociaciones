@@ -17,20 +17,20 @@ Estamos presentes en:
 
 = Actas =
 
-||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZZEtCeXgtN2tTc0k">Acta 01</a>||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZelM0bVlHRnRNaWs">Acta 02</a>||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZQ3h3cTlkZXJDV3c">Acta 03</a>||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZMzFrWkxXTGJ0LW8">Acta 04</a>||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZTnFzQkZVVHJibnc">Acta 05</a>||<a href="https://docs.google.com/file/d/0B4HlLGjZ8DLCMFg4RGRldHFJVUk">Acta  06</a>||
+||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZZEtCeXgtN2tTc0k">Acta 01</a>||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZelM0bVlHRnRNaWs">Acta 02</a>||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZQ3h3cTlkZXJDV3c">Acta 03</a>||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZMzFrWkxXTGJ0LW8">Acta 04</a>||<a href="https://docs.google.com/file/d/0B4HlLGjZ8DLCTjRSN0tuWHlkM1k">Acta 05</a>||<a href="https://docs.google.com/file/d/0B4HlLGjZ8DLCMFg4RGRldHFJVUk">Acta  06</a>||
 
 ------------------------------------------------------------------------
 
 = Especificación de los requisitos =
 
-||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZVmZqejRlbUw4b0U">Especificación de los requisitos</a>||
+||<a href="https://docs.google.com/file/d/0B4HlLGjZ8DLCdE9nQ21KTkQxTEk">Especificación de los requisitos</a>||
 
 
 ------------------------------------------------------------------------
 
 = Planificación y Costes =
 
-||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZVFNSRktvRG5faUk">Especificación de los requisitos</a>||
+||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZVFNSRktvRG5faUk">Planificación Y Costes</a>||
 
 ------------------------------------------------------------------------
 
