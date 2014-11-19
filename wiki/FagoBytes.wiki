@@ -2,7 +2,7 @@
 
 El repositorio ha sido creado para satisfacer las necesidades del la asignatura de tercer curso Ingeniería del Software II, por lo tanto es con fines académicos.
 
-Ésta práctica pertenece al grupo G1.03, desarrollaremos un software para la gestión y control para asociaciones.
+Ésta práctica pertenece al grupo G01.03, desarrollaremos un software para la gestión y control para asociaciones.
 
 A lo largo de la Wiki y los distintos lugares en los que estamos inscritos para la realización de la práctica explicaremos los distintas decisiones, procesos y acciones que hemos decidido para la consecución del proyecto
 
