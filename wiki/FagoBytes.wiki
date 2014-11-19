@@ -1,3 +1,5 @@
+¡¡Atención!! Importante: Se recomienda la visualización de los documentos pdf a través de Firefox o Safari, es posible que desde otro navegador no se visualicen de manera correcta.
+
 = Introducción =
 
 El repositorio ha sido creado para satisfacer las necesidades del la asignatura de tercer curso Ingeniería del Software II, por lo tanto es con fines académicos.
@@ -17,13 +19,27 @@ Estamos presentes en:
 
 = Actas =
 
+<a href="https://docs.google.com/document/d/1cv02gxiULbWYCvzSuaCtTCSVp8Q5m1Nm0MUxSFc8N7E/edit?usp=sharing">Acta01</a>
+
+<a href="https://docs.google.com/document/d/1mAGqU17YebfjaSbkTIzPLd2w9msYlJsEx6HoBV_VNSk/edit?usp=sharing">Acta02</a>
+
+<a href="https://docs.google.com/document/d/1TNWYnxW3gdoJ8YvzbZeP8uyAmJD5kIUJ8UKienTh3Ec/edit?usp=sharing">Acta03</a>
+
+<a href="https://docs.google.com/document/d/1Zt9SKmEUghe6Jah7adMGfEclLdaAwUuNwi1PpUtZuJI/edit?usp=sharing">Acta04</a>
+
+<a href="https://docs.google.com/document/d/1yEUOZ20DfG56OwW7U_u5QFu09E0QuFDv1qgR4S6VxCg/edit?usp=sharing">Acta05</a>
+
 ------------------------------------------------------------------------
 
 = Especificación de los requisitos =
 
+Documento donde se encuentra la especificación de requisitos: <a href="">Requisitos</a>
+
 ------------------------------------------------------------------------
 
 = Planificación y Costes =
+
+Documento donde se encuentra la planificación: <a href="">Planificación</a>
 
 ------------------------------------------------------------------------
 
@@ -33,9 +49,13 @@ Estamos presentes en:
 
 = Gestión de la Calidad =
 
-Calidad de Productos Software
+Estándar de calidad de la empresa: [https://sites.google.com/site/fagobytes/nosotros/calidad Control de Calidad]
 
-Calidad de Procesos Software
+Documento donde se encuentra las preguntas de evaluación:<a href="">Preguntas</a>
+
+Resultados: [https://sites.google.com/site/fagobytes/proyectos/asobu Evaluación de la madurez]
+
+
 
 ------------------------------------------------------------------------
 
