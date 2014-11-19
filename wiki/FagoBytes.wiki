@@ -35,6 +35,16 @@ Documento donde se encuentra la planificación: <a href="">Planificación</a>
 
 = Desarrollo del Proyecto =
 
+== Iteración 1 ==
+
+== Iteración 2 ==
+
+== Iteración 3 ==
+
+== Iteración 4 ==
+
+== Iteración 5 ==
+
 ------------------------------------------------------------------------
 
 = Gestión de la Calidad =
