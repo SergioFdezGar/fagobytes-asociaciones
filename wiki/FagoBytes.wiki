@@ -9,11 +9,10 @@ El repositorio ha sido creado para satisfacer las necesidades del la asignatura 
 A lo largo de la Wiki y los distintos lugares en los que estamos inscritos para la realización de la práctica explicaremos los distintas decisiones, procesos y acciones que hemos decidido para la consecución del proyecto
 
 Estamos presentes en:
-  * Twitter: Fagobytes_Corp
+  * Twitter: [https://twitter.com/FagobytesCorp Fagobytes_Corp]
   * Google+:
-  * Google Site: Fagobytes_Sites
-  * Google Groups: Fagobytes_Forum
-
+  * Google Site: [https://sites.google.com/site/fagobytes/ Fagobytes_Sites]
+  * Google Groups: [https://groups.google.com/forum/#!forum/fagobytes Fagobytes_Forum]
 ------------------------------------------------------------------------
 
 = Actas =
