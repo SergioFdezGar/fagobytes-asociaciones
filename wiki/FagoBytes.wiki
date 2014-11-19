@@ -1,7 +1,5 @@
 ¡¡Atención!! Importante: Se recomienda la visualización de los documentos pdf a través de Firefox o Safari, es posible que desde otro navegador no se visualicen de manera correcta.
 
-https://code.google.com/p/fagobytes-asociaciones/source/browse/wiki/img/BannerLogo2.png
-
 = Introducción =
 
 El repositorio ha sido creado para satisfacer las necesidades del la asignatura de tercer curso Ingeniería del Software II, por lo tanto es con fines académicos.
