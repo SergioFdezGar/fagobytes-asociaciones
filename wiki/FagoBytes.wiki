@@ -64,25 +64,3 @@ Resultados: [https://sites.google.com/site/fagobytes/proyectos/asobu Evaluación
 Tutorial SVN
 
 ------------------------------------------------------------------------
-
-= Prueba =
-
-The following is:
-  * A list
-  * Of bulleted items
-    # This is a numbered sublist
-    # Which is done by indenting further
-  * And back to the main bulleted list
-
- * This is also a list
- * With a single leading space
- * Notice that it is rendered
-  # At the same levels
-  # As the above lists.
- * Despite the different indentation levels.
-
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
