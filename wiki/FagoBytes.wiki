@@ -1,11 +1,51 @@
-#summary One-sentence summary of this page.
+= Introducción =
 
-= Introduction =
+El repositorio ha sido creado para satisfacer las necesidades del la asignatura de tercer curso Ingeniería del Software II, por lo tanto es con fines académicos.
 
-Add your content here.
+Ésta práctica pertenece al grupo G1.03, desarrollaremos un software para la gestión y control para asociaciones.
+
+A lo largo de la Wiki y los distintos lugares en los que estamos inscritos para la realización de la práctica explicaremos los distintas decisiones, procesos y acciones que hemos decidido para la consecución del proyecto
+
+Estamos presentes en:
+
+*Twitter:* Fagobytes_Corp
+*Google+:* 
+*Google Site:* Fagobytes_Sites
+*Google Groups:* Fagobytes_Forum 
+
+------------------------------------------------------------------------
+
+= Actas =
+
+------------------------------------------------------------------------
+
+= Especificación de los requisitos =
+
+------------------------------------------------------------------------
+
+= Planificación y Costes =
+
+------------------------------------------------------------------------
+
+= Desarrollo del Proyecto =
+
+------------------------------------------------------------------------
+
+= Gestión de la Calidad =
+
+Calidad de Productos Software
+
+Calidad de Procesos Software
+
+------------------------------------------------------------------------
+
+= Gestión de la Configuración =
+
+Tutorial SVN
+
+------------------------------------------------------------------------
 
 
-= Details =
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
