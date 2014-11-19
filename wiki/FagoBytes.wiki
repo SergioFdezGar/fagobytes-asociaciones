@@ -17,19 +17,20 @@ Estamos presentes en:
 
 = Actas =
 
-||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZZEtCeXgtN2tTc0k">Acta01</a>||<a href="https://docs.google.com/document/d/1mAGqU17YebfjaSbkTIzPLd2w9msYlJsEx6HoBV_VNSk/edit?usp=sharing">Acta02</a>||<a href="https://docs.google.com/document/d/1TNWYnxW3gdoJ8YvzbZeP8uyAmJD5kIUJ8UKienTh3Ec/edit?usp=sharing">Acta03</a>||<a href="https://docs.google.com/document/d/1Zt9SKmEUghe6Jah7adMGfEclLdaAwUuNwi1PpUtZuJI/edit?usp=sharing">Acta04</a>||<a href="https://docs.google.com/document/d/1yEUOZ20DfG56OwW7U_u5QFu09E0QuFDv1qgR4S6VxCg/edit?usp=sharing">Acta05</a>||
+||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZZEtCeXgtN2tTc0k">Acta 01</a>||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZelM0bVlHRnRNaWs">Acta 02</a>||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZQ3h3cTlkZXJDV3c">Acta 03</a>||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZMzFrWkxXTGJ0LW8">Acta 04</a>||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZTnFzQkZVVHJibnc">Acta 05</a>||<a href="https://docs.google.com/file/d/0B4HlLGjZ8DLCMFg4RGRldHFJVUk">Acta  06</a>||
 
 ------------------------------------------------------------------------
 
 = Especificación de los requisitos =
 
-Documento donde se encuentra la especificación de requisitos: <a href="">Requisitos</a>
+||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZVmZqejRlbUw4b0U">Especificación de los requisitos</a>||
+
 
 ------------------------------------------------------------------------
 
 = Planificación y Costes =
 
-Documento donde se encuentra la planificación: <a href="">Planificación</a>
+||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZVFNSRktvRG5faUk">Especificación de los requisitos</a>||
 
 ------------------------------------------------------------------------
 
@@ -49,18 +50,16 @@ Documento donde se encuentra la planificación: <a href="">Planificación</a>
 
 = Gestión de la Calidad =
 
-Estándar de calidad de la empresa: [https://sites.google.com/site/fagobytes/nosotros/calidad Control de Calidad]
+||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZNG9hV3FhZVV2RFk">Calidad del Producto</a>||
 
-Documento donde se encuentra las preguntas de evaluación:<a href="">Preguntas</a>
+||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZcXg0UjUxSTNDcG8">Preguntas sobre la Calidad</a>||
 
-Resultados: [https://sites.google.com/site/fagobytes/proyectos/asobu Evaluación de la madurez]
-
-
+||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZaU4wdjZMdDQtLVU">Calidad de los Procesos</a>||
 
 ------------------------------------------------------------------------
 
 = Gestión de la Configuración =
 
-Tutorial SVN
+||<a href="https://docs.google.com/file/d/0Bw4TqB37RCkZWnVMYzFubW0xOGM">Tutorial SVN</a>||
 
 ------------------------------------------------------------------------
