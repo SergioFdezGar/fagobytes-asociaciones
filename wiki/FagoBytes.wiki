@@ -1,4 +1,3 @@
-
 = Introducción =
 
 El repositorio ha sido creado para satisfacer las necesidades del la asignatura de tercer curso Ingeniería del Software II, por lo tanto es con fines académicos.
@@ -66,7 +65,7 @@ Estamos presentes en:
 ------------------------------------------------------------------------
 = Casos de Uso =
 
-||<a href=" ">Documento Casos de Uso</a>||
+||<a href="https://docs.google.com/file/d/0B4HlLGjZ8DLCUTgtaVpqOWJIaVk">Documento Casos de Uso</a>||
 
 ||<a href="https://docs.google.com/file/d/0B4HlLGjZ8DLCU0F1Ym9sWjR0dTg">CDU 01: Gestión de clientes</a>||
 ||<a href="https://docs.google.com/file/d/0B4HlLGjZ8DLCU0w3MmowZHY4VUk">CDU 02: Gestión de eventos</a>||
