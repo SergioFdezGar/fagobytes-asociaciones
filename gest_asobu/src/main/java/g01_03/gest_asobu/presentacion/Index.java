@@ -1538,14 +1538,21 @@ public class Index {
 	
 	public void actualizarMiembros(){
 		try{
-			String sql ="select * from Asociacion ";
-			PreparedStatement pst = connection.prepareStatement(sql);
-			ResultSet rs=pst.executeQuery();
-			while(rs.next())
-				modeloListaMiembro.addElement(rs.getString("dni")+ " " +rs.getString("nombre")+ " " +rs.getString("apellido1")+ " " +rs.getString("apellido2"));
+			//String sql ="select * from Asociacion ";
+			//PreparedStatement pst = connection.prepareStatement(sql);
+			//ResultSet rs=pst.executeQuery();
+			//while(rs.next())
+			int total=gestMiembros.numMiembros();
+			for(int i=0; i<total;i++){
+				modeloListaMiembro.addElement(gestMiembros.getMiembro(i).getDni()
+						+ " " +gestMiembros.getMiembro(i).getNombre()
+						+ " " +gestMiembros.getMiembro(i).getApellidos1()
+						+ " " +gestMiembros.getMiembro(i).getApellidos2());
+				
 			listMiembro.setModel(modeloListaMiembro);
-			rs.close();
-			pst.close();
+			}
+			//rs.close();
+			//pst.close();
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, e);
 		}
