@@ -291,8 +291,12 @@ public class MiembroDAO {
 	}
 
 	public int numMiembros() throws SQLException, Exception {
-		String query ="SELECT COUNT(*) FROM `"+T_ASOCIACION+"`";
-		return agente.update(query);
+//		LinkedList<Vector<String>> resultado=null;
+//		int num=0;
+//		String query ="SELECT COUNT(*) FROM `"+T_ASOCIACION+"`";
+//		num=agente.update(query);
+		//num= Integer.parseInt(resultado.getFirst().firstElement());
+		return lista_miembros.size();
 	}
 	
 
