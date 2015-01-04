@@ -1529,10 +1529,7 @@ public class Index {
 			cl.show(getPanelContenedor(), "Admin");
 		}
 	}
-	
-	
-	
-	
+		
 	
 	//METODOS
 	
@@ -1548,12 +1545,12 @@ public class Index {
 						+ " " +gestMiembros.getMiembro(i).getNombre()
 						+ " " +gestMiembros.getMiembro(i).getApellidos1()
 						+ " " +gestMiembros.getMiembro(i).getApellidos2());
-				
-			listMiembro.setModel(modeloListaMiembro);
 			}
+			listMiembro.setModel(modeloListaMiembro);
 			//rs.close();
 			//pst.close();
 		}catch(Exception e){
+			System.out.println("ERROR!:"+ e.getMessage());
 			JOptionPane.showMessageDialog(null, e);
 		}
 	}
