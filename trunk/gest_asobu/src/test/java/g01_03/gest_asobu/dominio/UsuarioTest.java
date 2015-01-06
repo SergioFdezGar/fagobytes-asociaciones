@@ -6,7 +6,7 @@ public class UsuarioTest extends TestCase{
 
 	public void testUsuario() {
 		Usuario user=new Usuario("pepe", "angustias");
-		assertFalse(user.getUsuario().equals(user));
+		assertTrue(user!=null);
 	}
 
 	public void testGet_usuario() {
