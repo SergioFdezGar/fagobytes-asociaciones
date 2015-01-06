@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.JToolBar;
 import javax.swing.JMenu;
 import javax.swing.SwingConstants;
 import javax.swing.JMenuBar;
@@ -33,8 +32,6 @@ import java.awt.Color;
 import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
 
 import java.awt.Dimension;
 import java.awt.Component;
@@ -43,79 +40,22 @@ import java.awt.event.ActionEvent;
 import java.awt.CardLayout;
 
 import javax.swing.JList;
-import javax.swing.border.LineBorder;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Vector;
 
 import javax.swing.JMenuItem;
 
 import java.awt.Font;
-
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.border.SoftBevelBorder;
-
 import java.awt.SystemColor;
 
-import javax.swing.JTextArea;
-
-import java.awt.GridLayout;
-
-import javax.swing.ButtonGroup;
-import javax.swing.AbstractListModel;
 import javax.swing.DefaultComboBoxModel;
 
 
@@ -150,9 +90,10 @@ import javax.swing.DefaultComboBoxModel;
 
 
 
+
+
+
 import g01_03.gest_asobu.dominio.*;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.ListSelectionEvent;
 
 
 
@@ -194,8 +135,6 @@ public class Index {
 	private JTextField txtApellidosMiembro2;
 	private JLabel lblDNIMiembro;
 	private JLabel lblFechaNacimientoMiembro;
-	private JLabel lblSexoMiembro;
-	private JComboBox cbSexoMiembro;
 	private JLabel lblDireccionMiembro;
 	private JComboBox cbDireccionMiembro;
 	private JTextField txtDireccionMiembro;
@@ -211,8 +150,6 @@ public class Index {
 	private JTextField txtLocalidadMiembro;
 	private JLabel lblProvinciaMiembro;
 	private JTextField txtProvinciaMiembro;
-	private JLabel lblPaisMiembro;
-	private JTextField txtPaisMiembro;
 	private JLabel lblTelefonoMiembro;
 	private JFormattedTextField txtTelefonoMiembro;
 	private JLabel lblCorreoElectronicoMiembro;
@@ -233,17 +170,14 @@ public class Index {
 	private JMenuItem mntmIrAPerfil;
 	
 	
-	private JPanel panelAnterior;
-	private JPanel panelActual = panelIndex;
 	private JScrollPane spMiembro;
-	private JList listMiembro;
+	private JList<?> listMiembro;
 	private JScrollPane spUsuario;
-	private JList listUsuario;
+	private JList<String> listUsuario;
 	private JPanel panelDatosMiembro;
 	private JButton btnGuardarMiembroMiembro;
 	private JButton btnModificarMiembroMiembro;
 	private JButton btnEliminarMiembroMiembro;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JLabel lblTituloBuscarMiembro;
 	private JLabel lblTituloBuscarUsuario;
 	private JPanel panelDatosUsuario;
@@ -1333,6 +1267,7 @@ public class Index {
 	
 	private class BtnCrearUsuarioActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			es_modificacion=false;
 			CardLayout cl = (CardLayout)(getPanelContenedor().getLayout());
 			cl.show(getPanelContenedor(), "Usuario");
 			limpiarUsuario();
@@ -1348,6 +1283,7 @@ public class Index {
 			if (listUsuario.getSelectedIndex()==-1){
 				JOptionPane.showMessageDialog(frmIndex,"Error al seleccionar al usuario", "Error", JOptionPane.INFORMATION_MESSAGE);
 			} else{
+				es_modificacion=true;
 				CardLayout cl = (CardLayout)(getPanelContenedor().getLayout());
 				cl.show(getPanelContenedor(), "Usuario");
 				limpiarUsuario();
@@ -1379,6 +1315,7 @@ public class Index {
 			if (listUsuario.getSelectedIndex()==-1){
 				JOptionPane.showMessageDialog(frmIndex,"Error al seleccionar al usuario", "Error", JOptionPane.INFORMATION_MESSAGE); //$NON-NLS-2$
 			} else{
+				es_modificacion=false;
 				CardLayout cl = (CardLayout)(getPanelContenedor().getLayout());
 				cl.show(getPanelContenedor(), "Usuario");
 				limpiarUsuario();
@@ -1416,14 +1353,24 @@ public class Index {
 	private class BtnEliminarMiembroMiembroActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			int n = JOptionPane.showConfirmDialog(frmIndex, "¿Confirma la operación?", "Confirmar", JOptionPane.YES_NO_OPTION);
+			boolean correcto=false;
 			if(n==0){
 				CardLayout cl = (CardLayout)(getPanelContenedor().getLayout());
 				cl.show(getPanelContenedor(), "Home");
 				es_modificacion=false;
-				eliminarMiembro();	
-				editarMiembro(false);
-				limpiarMiembro();
-				JOptionPane.showMessageDialog(frmIndex, "La operación se ha completado", "Información", JOptionPane.INFORMATION_MESSAGE);
+				correcto=eliminarMiembro(listMiembro.getSelectedIndex());	
+
+				if (correcto){
+					editarMiembro(false);
+					limpiarMiembro();
+					JOptionPane.showMessageDialog(frmIndex, "La operación se ha completado", "Información", JOptionPane.INFORMATION_MESSAGE);
+					CardLayout c2 = (CardLayout)(getPanelContenedor().getLayout());
+					c2.show(getPanelContenedor(), "BuscarMiembro");
+					modeloListaMiembro.removeAllElements();
+					actualizarMiembros();
+				}
+				
+				
 			}	
 			
 		}
@@ -1444,6 +1391,7 @@ public class Index {
 	private class BtnModificarUsuarioUsuarioActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			editarUsuario(true);
+			es_modificacion=true;
 			btnGuardarUsuarioUsuario.setEnabled(true);
 			btnModificarUsuarioUsuario.setEnabled(false);
 			btnEliminarUsuarioUsuario.setEnabled(false);
@@ -1453,13 +1401,22 @@ public class Index {
 	private class BtnEliminarUsuarioUsuarioActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			int n = JOptionPane.showConfirmDialog(frmIndex, "¿Confirma la operación?", "Confirmar", JOptionPane.YES_NO_OPTION);
+			boolean correcto=false;
 			if(n==0){
 				CardLayout cl = (CardLayout)(getPanelContenedor().getLayout());
 				cl.show(getPanelContenedor(), "Home");
-				eliminarUsuario(txtUsuarioUsuario.getText());	
-				editarUsuario(false);
-				limpiarUsuario();
-				JOptionPane.showMessageDialog(frmIndex, "La operación se ha completado", "Información", JOptionPane.INFORMATION_MESSAGE);
+				es_modificacion=false;
+				correcto=eliminarUsuario(txtUsuarioUsuario.getText());
+				if (correcto){
+					editarUsuario(false);
+					limpiarUsuario();
+					JOptionPane.showMessageDialog(frmIndex, "La operación se ha completado", "Información", JOptionPane.INFORMATION_MESSAGE);
+					CardLayout c2 = (CardLayout)(getPanelContenedor().getLayout());
+					c2.show(getPanelContenedor(), "BuscarUsuario");
+					modeloListaUsuario.removeAllElements();
+					actualizarUsuarios();
+				}
+				
 			}
 		}
 	}
@@ -1535,10 +1492,6 @@ public class Index {
 	
 	public void actualizarMiembros(){
 		try{
-			//String sql ="select * from Asociacion ";
-			//PreparedStatement pst = connection.prepareStatement(sql);
-			//ResultSet rs=pst.executeQuery();
-			//while(rs.next())
 			int total=gestMiembros.numMiembros();
 			for(int i=0; i<total;i++){
 				modeloListaMiembro.addElement(gestMiembros.getMiembro(i).getDni()
@@ -1557,15 +1510,15 @@ public class Index {
 	
 	public void actualizarUsuarios(){
 		try{
-			String sql ="select * from Usuario ";
-			PreparedStatement pst = connection.prepareStatement(sql);
-			ResultSet rs=pst.executeQuery();
-			while(rs.next())
-				modeloListaUsuario.addElement(rs.getString("nombre"));
-			listUsuario.setModel(modeloListaUsuario);
-			rs.close();
-			pst.close();
+			int total=gestUsuarios.numUsuarios();
+			for(int i=0; i<total;i++){
+				modeloListaUsuario.addElement(gestUsuarios.getUsuario(i).getUsuario());
+			}
+			listMiembro.setModel(modeloListaUsuario);
+			//rs.close();
+			//pst.close();
 		}catch(Exception e){
+			System.out.println("ERROR!:"+ e.getMessage());
 			JOptionPane.showMessageDialog(null, e);
 		}
 	}
@@ -1634,126 +1587,36 @@ public class Index {
 		txtCorreoElectronicoMiembro.setText(" ");
 	}
 	
-	
-	/*public void guardarMiembro(String index){
-		Miembro miembro = null;
-		try{
-			try{
-//				String nombre = txtNombreMiembro.getText();
-//				String apellido1 = txtApellidosMiembro1.getText();
-//				String apellido2 = txtApellidosMiembro2.getText();
-//				String dni = fTxtDNIMiembro.getText();
-//				String fecha = fTxtFechaNacimiento.getText();
-//				String rol = cbRol.getSelectedItem().toString();
-//				String tipoVia = cbDireccionMiembro.getSelectedItem().toString();
-//				String direccion = txtDireccionMiembro.getText();
-//				int nCalle = Integer.parseInt(txtNumeroMiembro.getText());
-//				String escalera = txtEscaleraMiembro.getText();
-//				int piso = Integer.parseInt(txtPisoMiembro.getText());
-//				String puerta = txtPuertaMiembro.getText();
-//				int codigoPostal = Integer.parseInt(txtCodigoPostalMiembro.getText());
-//				String provincia = txtProvinciaMiembro.getText();
-//				String telefono = txtTelefonoMiembro.getText();
-//				String localidad = txtLocalidadMiembro.getText();
-//				String correoElectronico = txtCorreoElectronicoMiembro.getText();
-//				
-				
-				//
-				String nombre = "Sergio";
-				String apellido1 = "G�mez";
-				String apellido2 = "Jaramillo";
-				String dni = "04669851-K";
-				String fecha = "1985/09/04";
-				String rol = "usuario";
-				String tipoVia = "Calle";
-				String direccion = "Lirio";
-				int nCalle = 122;
-				String escalera = "B";
-				int piso = 3;
-				String puerta = "F";
-				int codigoPostal = 13002;
-				String provincia = "Ciudad Real";
-				String telefono = "685941258";
-				String localidad = "Ciudad Real";
-				String correoElectronico = "sergio@gmail.com";
-				//
-				miembro = new Miembro(dni, nombre,apellido1, apellido2, fecha, tipoVia, direccion, nCalle, escalera, piso, puerta, codigoPostal, provincia, localidad, telefono, correoElectronico, rol);
-				
-				gestMiembros.agregar(miembro);
-				JOptionPane.showMessageDialog(null, "Guardado Correctamente");
-			}catch(Exception e){
-				for(int i=0; i<gestMiembros.numMiembros(); i++){
-					if(gestMiembros.getMiembro(i).getDni()== index)
-						gestMiembros.modificar(gestMiembros.getMiembro(i), miembro);
-				}
-				JOptionPane.showMessageDialog(null, "Guardado Correctamente");
-			}
-		}catch(Exception e){
-			JOptionPane.showMessageDialog(null, e);
-			
-		}
-	}*/
-	
 	public void guardarMiembro(){
 		Vector<String> datos= new Vector<String>();
 		
 		try{
-			try{
-				datos.add(1, fTxtDNIMiembro.getText());
-				datos.add(2,txtNombreMiembro.getText());
-				datos.add(3,txtApellidosMiembro1.getText() );
-				datos.add(4,txtApellidosMiembro2.getText() );
-				datos.add(5,fTxtFechaNacimiento.getText() );
-				datos.add(6,cbDireccionMiembro.getSelectedItem().toString() );
-				datos.add(7,txtDireccionMiembro.getText() );
-				datos.add(8,txtNumeroMiembro.getText());  //int
-				datos.add(9,txtEscaleraMiembro.getText() );
-				datos.add(10,txtPisoMiembro.getText()); //int
-				datos.add(11,txtPuertaMiembro.getText() );
-				datos.add(12,txtCodigoPostalMiembro.getText()); //int
-				datos.add(13,txtProvinciaMiembro.getText() );
-				datos.add(14,txtLocalidadMiembro.getText() );
-				datos.add(15,txtTelefonoMiembro.getText() );
-				datos.add(16,txtCorreoElectronicoMiembro.getText() );				
-				datos.add(17,cbRol.getSelectedItem().toString());
-				
-				if(es_modificacion){
-					gestMiembros.modificar(datos);
-					JOptionPane.showMessageDialog(null, "Modificado Correctamente");
-				}else{
-					gestMiembros.agregar(datos);
-					JOptionPane.showMessageDialog(null, "Guardado Correctamente");					
-				}
-
-				
-
-			}catch(Exception e){
-//				String nombre = txtNombreMiembro.getText();
-//				String apellido1 = txtApellidosMiembro1.getText();
-//				String apellido2 = txtApellidosMiembro2.getText();
-//				String dni = fTxtDNIMiembro.getText();
-//				String fecha = fTxtFechaNacimiento.getText();
-//				String rol = cbRol.getSelectedItem().toString();
-//				String tipoVia = cbDireccionMiembro.getSelectedItem().toString();
-//				String direccion = txtDireccionMiembro.getText();
-//				int nCalle = Integer.parseInt(txtNumeroMiembro.getText());
-//				String escalera = txtEscaleraMiembro.getText();
-//				int piso = Integer.parseInt(txtPisoMiembro.getText());
-//				String puerta = txtPuertaMiembro.getText();
-//				int codigoPostal = Integer.parseInt(txtCodigoPostalMiembro.getText());
-//				String provincia = txtProvinciaMiembro.getText();
-//				String telefono = txtTelefonoMiembro.getText();
-//				String localidad = txtLocalidadMiembro.getText();
-//				String correoElectronico = txtCorreoElectronicoMiembro.getText();
-//				
-//				
-//				
-//				String sql="update Asociacion set nombre='"+nombre+"' ,apellido1 ='"+apellido1+"',apellido2 ='"+apellido2+"',dni ='"+dni+"',nacimiento='"+fecha+"',tipo_via='"+fecha+"',direccion='"+fecha+"',numero='"+nCalle+"',escalera='"+escalera+"',piso='"+piso+"',puerta='"+puerta+"',cod_postal='"+codigoPostal+"',provincia='"+provincia+"',localidad='"+localidad+"',tlfn='"+telefono+"',email='"+correoElectronico+"' where dni='"+dni+"' ";
-//				PreparedStatement pst = connection.prepareStatement(sql);
-//				pst.execute();
-//				pst.close();
-//			JOptionPane.showMessageDialog(null, "Guardado Correctamente");
+			datos.add(fTxtDNIMiembro.getText());
+			datos.add(txtNombreMiembro.getText().toString());
+			datos.add(txtApellidosMiembro1.getText() );
+			datos.add(txtApellidosMiembro2.getText() );
+			datos.add(fTxtFechaNacimiento.getText() );
+			datos.add(cbDireccionMiembro.getSelectedItem().toString() );
+			datos.add(txtDireccionMiembro.getText() );
+			datos.add(txtNumeroMiembro.getText());  //int
+			datos.add(txtEscaleraMiembro.getText() );
+			datos.add(txtPisoMiembro.getText()); //int
+			datos.add(txtPuertaMiembro.getText() );
+			datos.add(txtCodigoPostalMiembro.getText()); //int
+			datos.add(txtProvinciaMiembro.getText() );
+			datos.add(txtLocalidadMiembro.getText() );
+			datos.add(txtTelefonoMiembro.getText() );
+			datos.add(txtCorreoElectronicoMiembro.getText() );				
+			datos.add(cbRol.getSelectedItem().toString());
+			
+			if(es_modificacion){
+				gestMiembros.modificar(datos);
+				JOptionPane.showMessageDialog(null, "Modificado Correctamente");
+			}else{
+				gestMiembros.agregar(datos);
+				JOptionPane.showMessageDialog(null, "Guardado Correctamente");					
 			}
+
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, e);
 			
@@ -1761,36 +1624,41 @@ public class Index {
 	}
 	
 
-	public void eliminarMiembro(int index){  //SI FUNCIONA pero no actualiza
-//		String miembro = (String) listMiembro.getModel().getElementAt(index);
-//		String[] texto=miembro.split(" ");
-//		String dni = texto[0];
-		try{
+	public boolean eliminarMiembro(int index){  //SI FUNCIONA pero no actualiza
+		boolean correcto=false;
+		try {
 			gestMiembros.getMiembro(index);
-			gestMiembros.eliminarMiembro();
-						
-//			String sql ="delete from Usuario where dni='"+dni+"' ";
-//        	PreparedStatement pst = connection.prepareStatement(sql);
-//        	pst.execute();
-//			pst.close();
-		}catch(Exception e){
+			gestMiembros.eliminar();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, e);
+			e.printStackTrace();
 		}
+		
+		return correcto;
 	}
 
-	public void eliminarMiembro(){
-		try{
-			gestMiembros.eliminarMiembro();
-//			String sql ="delete from Usuario where dni='"+dni+"' ";
-//			PreparedStatement pst = connection.prepareStatement(sql);
-//			pst.execute();
-//			pst.close();
-		}catch(Exception e){
+	public boolean eliminarMiembro(String dni){
+		boolean correcto= false;
+		try {
+			gestMiembros.getMiembro(dni);
+			correcto=gestMiembros.eliminar();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, e);
+			e.printStackTrace();
 		}
-	}
-	
-	
+		
+		return correcto;	
+	}	
 	
 	public void mostrarUsuario(int index){
 		try{
@@ -1802,24 +1670,22 @@ public class Index {
 	}
 	
 	public void guardarUsuario(){
+		Vector<String> datos= new Vector<String>();
+		
 		try{
 			try{
-				String sql ="Insert into Usuario (nombre,password) values (?,?)";  
-				PreparedStatement pst = connection.prepareStatement(sql);
-				pst.setString(1, txtUsuarioUsuario.getText());
-				pst.setString(2, frmtdtxtfldContrasena.getText());
+				datos.add(txtUsuarioUsuario.getText());
+				datos.add(frmtdtxtfldContrasena.getText());
+
+				if(es_modificacion){
+					gestUsuarios.modificar(datos);
+					JOptionPane.showMessageDialog(null, "Modificado Correctamente");
+				}else{
+					gestUsuarios.agregar(datos);
+					JOptionPane.showMessageDialog(null, "Guardado Correctamente");					
+				}
+			}catch(Exception e)	{
 				
-				pst.execute();
-				pst.close();
-				JOptionPane.showMessageDialog(null, "Guardado Correctamente");
-			}catch(Exception e){
-				String user = txtUsuarioUsuario.getText();
-				String password = frmtdtxtfldContrasena.getText();
-				String sql="update Usuario set nombre='"+user+"' ,password ='"+password+"'where nombre='"+user+"' ";
-				PreparedStatement pst = connection.prepareStatement(sql);
-				pst.execute();
-				pst.close();
-				JOptionPane.showMessageDialog(null, "Guardado Correctamente");
 			}
 		}catch(Exception e){
 			JOptionPane.showMessageDialog(null, e);
@@ -1838,29 +1704,40 @@ public class Index {
 		frmtdtxtfldContrasena.setText(" ");
 	}
 	
-	public void eliminarUsuario(int index){  //SI FUNCIONA pero no actualiza
-		String usuario = (String) listUsuario.getModel().getElementAt(index);
-		String[] texto=usuario.split(" ");
-		String nombre = texto[0];
-		try{
-			String sql ="delete from Usuario where nombre='"+nombre+"' ";
-        	PreparedStatement pst = connection.prepareStatement(sql);
-        	pst.execute();
-			pst.close();
-		}catch(Exception e){
+	public boolean eliminarUsuario(int index){  //SI FUNCIONA pero no actualiza
+		boolean correcto=false;
+		try {
+			gestUsuarios.getUsuario(index);
+			correcto=gestUsuarios.eliminar();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, e);
+			e.printStackTrace();
 		}
+		
+		return correcto;
 	}
 
-	public void eliminarUsuario(String nombre){
-		try{
-			String sql ="delete from Usuario where nombre='"+nombre+"' ";
-			PreparedStatement pst = connection.prepareStatement(sql);
-			pst.execute();
-			pst.close();
-		}catch(Exception e){
+	public boolean eliminarUsuario(String nombre){
+		boolean correcto= false;
+		try {
+			gestUsuarios.getUsuario(nombre);
+			correcto=gestUsuarios.eliminar();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, e);
+			e.printStackTrace();
 		}
+		
+		return correcto;
 	}
 	
 	

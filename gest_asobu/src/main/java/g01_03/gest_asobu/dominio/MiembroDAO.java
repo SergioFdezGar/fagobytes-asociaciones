@@ -237,7 +237,7 @@ public class MiembroDAO {
 	}
 
 
-	public Miembro crearMiembro(Vector<String> vector) throws Exception {	
+	public Miembro crear(Vector<String> vector) throws Exception {	
 		Miembro member= new Miembro(vector.get(1), vector.get(2), vector.get(3),
 				vector.get(4), vector.get(5), vector.get(6),
 				vector.get(7), Integer.parseInt(vector.get(8)),
