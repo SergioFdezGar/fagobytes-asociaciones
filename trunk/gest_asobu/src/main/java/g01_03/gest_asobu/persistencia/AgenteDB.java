@@ -11,7 +11,7 @@ public class AgenteDB{
     protected static AgenteDB mInstancia = null;
     protected static Connection mBD;
 
-    public AgenteDB(){
+    private AgenteDB(){
     }
 
     public static AgenteDB getAgente() throws Exception{
@@ -22,7 +22,7 @@ public class AgenteDB{
     
     public static Connection conectar() throws Exception{
         String driver = "com.mysql.jdbc.Driver";
-       // String url = "jdbc:mysql://localhost:3306/asobu_ddbb";
+        //String url = "jdbc:mysql://localhost:3306/asobu_ddbb";
         String url = "jdbc:mysql://212.122.119.21:3306/asobu_ddbb";
         try{
         	Class.forName(driver);
@@ -99,10 +99,58 @@ public class AgenteDB{
         return result;
     }
 
+    public int delete(String SQL, boolean restrictivo) throws SQLException, Exception{
+        conectar();
+        int var = 0;
+        
+        if (!restrictivo){
+            PreparedStatement ps = mBD.prepareStatement("SET FOREIGN_KEY_CHECKS = 0");
+            ps.execute();
+            ps.close();
+        }
+        PreparedStatement ps2 = mBD.prepareStatement(SQL);
+        var = ps2.executeUpdate();
+        ps2.close();
+
+        
+        if (!restrictivo){
+            PreparedStatement ps3 = mBD.prepareStatement("SET FOREIGN_KEY_CHECKS = 1");
+            ps3.execute();
+            ps3.close();
+        }
+        desconectar();
+        return var;
+    }
+
+    public int update(String SQL,boolean restrictivo) throws SQLException, Exception{
+        conectar();
+        int var = 0;
+
+        
+        if (!restrictivo){
+            PreparedStatement ps = mBD.prepareStatement("SET FOREIGN_KEY_CHECKS = 0");
+            ps.execute();
+            ps.close();
+        }
+        PreparedStatement ps2 = mBD.prepareStatement(SQL);
+        var = ps2.executeUpdate();
+        ps2.close();
+
+        
+        if (!restrictivo){
+            PreparedStatement ps3 = mBD.prepareStatement("SET FOREIGN_KEY_CHECKS = 1");
+            ps3.execute();
+            ps3.close();
+        }
+        desconectar();
+        return var;
+    }
+
     public int delete(String SQL) throws SQLException, Exception{
         conectar();
         PreparedStatement ps = mBD.prepareStatement(SQL);
         int var = ps.executeUpdate();
+
         ps.close();
         desconectar();
         return var;

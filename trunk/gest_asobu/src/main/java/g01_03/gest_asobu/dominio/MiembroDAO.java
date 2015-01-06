@@ -39,21 +39,12 @@ public class MiembroDAO {
 		 String query="INSERT INTO `"+ T_ASOCIACION+
 				 "` ("+ COLUMS_ASOCIACION + ") VALUES " + "("+ valores +")";
 		 try {
-			agente.insert(query);
-			
-			b=agregarRelacion(member);
-			
-			//Hay que agregar los insert para la tabla relacion
-			
-			
-			
+			b=agente.insert(query)>0?agregarRelacion(member): false;
 		} catch (SQLException e) {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-			b=false;
 		}
 		 
 		 return b;
@@ -78,8 +69,8 @@ public class MiembroDAO {
 			 String query2="INSERT INTO `"+ T_RELACION+
 					 "` ("+ COLUMS_RELACION + ") VALUES " + "('"+member.getDni()+ "',"+ idRol+", CURDATE())";
 		 
-			agente.insert(query2);
-			b=true;
+			b=agente.insert(query2)>0? true: false;
+			
 			
 			
 		} catch (SQLException e) {
@@ -87,10 +78,7 @@ public class MiembroDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-			b=false;
 		}
-		 
 		 return b;
 	}
 
@@ -102,21 +90,17 @@ public class MiembroDAO {
 				 "` SET "+ valores + " WHERE `dni`='"+ actual.getDni() +"'";
 		 try {
 			 if(valores.length()>0)
-				 agente.update(query);
+				 b=agente.update(query,false)>0? true: false;;
 			 
 			 
 			 //Comprobar si se ha cambiado el ROL
 			 
-			b=true;
 		} catch (SQLException e) {
-			
+			System.out.println(e.getMessage());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-			b=false;
 		}
-		 
 		 return b;
 	 }
 	 
@@ -126,18 +110,15 @@ public class MiembroDAO {
 				 "` WHERE `dni`='"+ member.getDni()+"'";
 		 
 		 try {
-			 b=eliminarRelacion(member);
-			 agente.delete(query);
-			
-			
-			
+			 if(eliminarRelacion(member)){
+				 b=agente.delete(query, false)>0? true : false; 
+			 } 
+			 
 		} catch (SQLException e) {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-			b=false;
 		}
 		 
 		 return b;
@@ -146,11 +127,9 @@ public class MiembroDAO {
 	 private boolean eliminarRelacion(Miembro member) {
 		 boolean b=false;
 		 String query="UPDATE `"+ T_RELACION+
-				 "` SET `fechaBaja`= CURDATE()  WHERE `dni`='"+ member.getDni() +"' ORDER BY `fechaAlta` DESC, `idRelacion`DESC limit 1";
+				 "` SET `fechaBaja`= CURDATE()  WHERE `dni`='"+ member.getDni() +"' ORDER BY `fechaAlta` DESC, `idRelacion` DESC limit 1";
 		 try {
-			 agente.update(query);
-			 b=true;
-			
+			 b=agente.update(query)>0? true: false;
 		} catch (SQLException e) {
 			
 		} catch (Exception e) {
@@ -187,42 +166,42 @@ public class MiembroDAO {
 	
 	private String diferencias(Miembro actual, Miembro other) {
 		String cadena="";
-			
+		boolean corregir=true;	
 		if(actual.getDni().equals(other.getDni())){
-			cadena="`dni`='"+other.getDni()+"' ";
+			cadena="`dni`='"+other.getDni()+"', ";
 		}
 		if(actual.getNombre().equals(other.getNombre())){
-			cadena+="`nombre`='"+other.getNombre()+"' ";
+			cadena+="`nombre`='"+other.getNombre()+"', ";
 		}
 		if(actual.getApellidos1().equals(other.getApellidos1())){
-			cadena+="`apellido1`='"+other.getApellidos1()+"' ";
+			cadena+="`apellido1`='"+other.getApellidos1()+"', ";
 		}
 		if(actual.getApellidos2().equals(other.getApellidos2())){
-			cadena+="`apellido2`='"+other.getApellidos2()+"' ";
+			cadena+="`apellido2`='"+other.getApellidos2()+"', ";
 		}
 		if(actual.getFechaNacimiento().equals(other.getFechaNacimiento())){
-			cadena+="`nacimiento`='"+other.getFechaNacimiento()+"' ";
+			cadena+="`nacimiento`='"+other.getFechaNacimiento()+"', ";
 		}
 		if(actual.getDireccion().equals(other.getDireccion())){
-			cadena+="`direccion`='"+other.getDireccion()+"' ";
+			cadena+="`direccion`='"+other.getDireccion()+"', ";
 		}
 		if(actual.getTipoVia().equals(other.getTipoVia())){
-			cadena+="`tipo_via`='"+other.getTipoVia()+"' ";
+			cadena+="`tipo_via`='"+other.getTipoVia()+"', ";
 		}
 		
 		
 		if(actual.getnCalle()==other.getnCalle()){
-			cadena+="`numero`="+other.getnCalle()+" ";
+			cadena+="`numero`="+other.getnCalle()+", ";
 		}
 		
 
 		if(actual.getEscalera().equals(other.getEscalera())){
-			cadena+="`escalera`='"+other.getEscalera()+"' ";
+			cadena+="`escalera`='"+other.getEscalera()+"', ";
 		}
 		
 		
 		if(actual.getPiso()==other.getPiso()){
-			cadena+="`piso`="+other.getDni()+" ";
+			cadena+="`piso`="+other.getPiso()+", ";
 		}
 		
 		
@@ -232,25 +211,28 @@ public class MiembroDAO {
 		
 		
 		if(actual.getCodigoPostal()==other.getCodigoPostal()){
-			cadena="`cod_postal`="+other.getDni()+" ";
+			cadena="`cod_postal`="+other.getCodigoPostal()+", ";
 		}
 		
 		
 		if(actual.getProvincia().equals(other.getProvincia())){
-			cadena="`provincia`='"+other.getProvincia()+"' ";
+			cadena="`provincia`='"+other.getProvincia()+"', ";
 		}
 		if(actual.getLocalidad().equals(other.getLocalidad())){
-			cadena="`localidad`='"+other.getLocalidad()+"' ";
+			cadena="`localidad`='"+other.getLocalidad()+"', ";
 		}
 		
 		if(actual.getTelefono()==other.getTelefono()){
-			cadena="`tlfn`='"+other.getTelefono()+"' ";
+			cadena="`tlfn`='"+other.getTelefono()+"', ";
 		}
 		
 		if(actual.getCorreoElectronico().equals(other.getCodigoPostal())){
 			cadena="`email`='"+other.getCorreoElectronico()+"' ";
+			corregir=false;
 		}
-				
+		
+		if(corregir)cadena=cadena.substring(0, (cadena.length()-2));
+		
 		return cadena;
 	}
 

@@ -29,7 +29,7 @@ public class UsuarioDAO {
 	        return myInstance;
 	    }
 
-	 public boolean autenticar(String user_name, String pass) throws Exception{
+	 public boolean autenticar(String user_name, String pass){
 		 LinkedList<Vector<String>> resultados=null;
 		 boolean b=false;
 		 
@@ -37,11 +37,20 @@ public class UsuarioDAO {
 				 "` WHERE `"+ NAME + "`= '"+ user_name 
 				 +"' AND `"+PASSWORD+ "`='"+ pass+ "'";
 
-		 resultados=agente.select(query);		 
-		 if(resultados.size()==1){
-			 b=true;
-		 }
-			 
+		 try {
+			resultados=agente.select(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 finally{	 
+			 if(resultados.size()==1){
+				 b=true;
+			 }
+		 }	 
 		 
 		 return b;
 		 
@@ -53,22 +62,15 @@ public class UsuarioDAO {
 		 String valores= user.toString();
 		 
 		 String query="INSERT INTO `"+ T_USUARIO+
-				 "` ("+ COLUMS_USUARIO + ") VALUES " + "(NULL,"+ valores +")";
+				 "` ("+ COLUMS_USUARIO + ") VALUES " + "("+ valores +")";
 		 try {
-			agente.insert(query);
-			b=true;
-			
-			//Hay que agregar los insert para la tabla relacion
-			
-			
+			b=agente.insert(query)>0? true: false;
 			
 		} catch (SQLException e) {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-			b=false;
 		}
 		 
 		 return b;
@@ -82,19 +84,13 @@ public class UsuarioDAO {
 				 "` SET "+ valores + " WHERE `nombre`='"+ actual.getUsuario() +"'";
 		 try {
 			 if(valores.length()>0)
-				 agente.update(query);
-			 
-			 
-			b=true;
+				 b=agente.update(query)>0? true: false;
 		} catch (SQLException e) {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-			b=false;
 		}
-		 
 		 return b;
 	 }
 	 
@@ -129,30 +125,31 @@ public class UsuarioDAO {
 				 "` WHERE `nombre`='"+ user.getUsuario()+"'";
 		 
 		 try {
-			agente.delete(query);
-			b=true;
+			b=agente.delete(query)>0? true:false;
 		} catch (SQLException e) {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-			b=false;
 		}
-		 
 		 return b;
 	 }
 	
 	private String diferencias(Usuario actual, Usuario other) {
 		String cadena="";
-			
-		if(actual.getUsuario().equals(other.getUsuario())){
-			cadena="`nombre`='"+other.getUsuario()+"' ";
+		boolean corregir=true;
+		
+		if(!actual.getUsuario().equals(other.getUsuario())){
+			cadena="`nombre`='"+other.getUsuario()+"', ";
 		}
-		if(actual.getPassword().equals(other.getPassword())){
+		if(!actual.getPassword().equals(other.getPassword())){
 			cadena+="`password`='"+other.getPassword()+"' ";
+			corregir=false;
 		}
-				
+		
+		//Recortamos la coma que pueda terminar en la cadena
+		if(corregir)cadena=cadena.substring(0, (cadena.length()-2));
+		
 		return cadena;
 	}
 
