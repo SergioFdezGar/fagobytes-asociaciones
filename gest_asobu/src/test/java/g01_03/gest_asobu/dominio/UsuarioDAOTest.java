@@ -31,6 +31,8 @@ public class UsuarioDAOTest extends TestCase{
 
     	 	 gesper = new UsuarioDAO();
              prueba=gesper.autenticar("sergio", "juas");
+            //
+             assertTrue(prueba);
 }
  
  public void testAgregar() throws Exception {
@@ -39,17 +41,30 @@ public class UsuarioDAOTest extends TestCase{
      boolean prueba=true;
     	 	 gesper = new UsuarioDAO();
              prueba=gesper.agregar(user);
-             assertFalse(prueba);
+             //
+             assertTrue(prueba);
 
 }
  
- public void testEliminar() throws Exception {
+ public void testEliminar1() throws Exception {
 	 UsuarioDAO gesper;
 	 Usuario user= new Usuario("prueba", "123");
      boolean prueba=true;
     	 	 gesper = new UsuarioDAO();
              prueba=gesper.eliminar(user);
+             //
              assertFalse(prueba);
+
+}
+ 
+ public void testEliminar2() throws Exception {
+	 UsuarioDAO gesper;
+	 Usuario user= new Usuario("prueba2", "456");
+     boolean prueba=true;
+    	 	 gesper = new UsuarioDAO();
+             prueba=gesper.eliminar(user);
+             //
+             assertTrue(prueba);
 
 }
  
@@ -60,7 +75,8 @@ public class UsuarioDAOTest extends TestCase{
      boolean prueba=true;
     	 	 gesper = new UsuarioDAO();
              prueba=gesper.modificar(user,user2);
-             assertFalse(prueba);
+             //
+             assertTrue(prueba);
 
 }
  public void testModificar2() throws Exception {

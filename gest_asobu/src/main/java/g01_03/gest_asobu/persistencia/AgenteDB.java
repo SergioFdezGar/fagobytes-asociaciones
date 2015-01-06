@@ -22,8 +22,8 @@ public class AgenteDB{
     
     public static Connection conectar() throws Exception{
         String driver = "com.mysql.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/asobu_ddbb";
-        //String url = "jdbc:mysql://212.122.119.21:3306/asobu_ddbb";
+       // String url = "jdbc:mysql://localhost:3306/asobu_ddbb";
+        String url = "jdbc:mysql://212.122.119.21:3306/asobu_ddbb";
         try{
         	Class.forName(driver);
         	mBD = DriverManager.getConnection(url,"asobu","450buPr0y3ct");
