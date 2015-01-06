@@ -20,7 +20,7 @@ public class GestorMiembros {
 	public boolean agregar(Vector<String> atrib_data) throws Exception{
 		boolean b=false;
 		
-		miembro_activo=miembroDao.crearMiembro(atrib_data);
+		miembro_activo=miembroDao.crear(atrib_data);
 		miembro_modificado=null;
 		
 		if (miembro_activo!=null)
@@ -29,12 +29,12 @@ public class GestorMiembros {
 		 if(b) listar();		 
 		 
 		 return b;
-		 
 	}
+	
 	 public boolean modificar(Vector<String> atrib_data) throws SQLException, Exception{
 		 boolean b= false;
 		 
-		 miembro_modificado=miembroDao.crearMiembro(atrib_data);
+		 miembro_modificado=miembroDao.crear(atrib_data);
 		 
 		 if(miembro_modificado!=null)
 			 b=miembroDao.modificar(miembro_activo, miembro_modificado);
@@ -49,7 +49,7 @@ public class GestorMiembros {
 		 
 	 }
 	 
-	 public boolean eliminarMiembro() throws SQLException, Exception{
+	 public boolean eliminar() throws SQLException, Exception{
 		 boolean b=false;
 		 
 		 b=miembroDao.eliminar(miembro_activo);

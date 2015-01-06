@@ -76,6 +76,12 @@ public class UsuarioDAO {
 		 return b;
 	 }
 
+	public Usuario crearMiembro(Vector<String> vector) throws Exception {	
+		Usuario user= new Usuario(vector.get(1), vector.get(2)); 
+		return user;
+	}
+	
+	
 	 public boolean modificar(Usuario actual, Usuario cambio){
 		 boolean b=false;
 		 String valores= diferencias(actual, cambio);
@@ -168,7 +174,7 @@ public class UsuarioDAO {
 		 }
 	}
 
-	private Usuario crearUsuario(Vector<String> vector) throws SQLException, Exception {
+	public Usuario crearUsuario(Vector<String> vector) throws SQLException, Exception {
 
 		Usuario user= new Usuario(vector.get(0), vector.get(1)); 
 		
@@ -181,5 +187,23 @@ public class UsuarioDAO {
 
 	public int numUsuarios() {
 		return lista_usuarios.size();
+	}
+	
+	public Usuario getUsuario(String nombre) throws SQLException, Exception {
+		return recuperarUsuario(nombre);
+	}
+
+	private Usuario recuperarUsuario(String nombre) throws SQLException, Exception {		 
+		LinkedList<Vector<String>> resultado=null;
+
+		String query ="SELECT * FROM `"+T_USUARIO
+				+ "` WHERE `nombre`= '"+nombre+"'";
+		
+		resultado=agente.select(query);
+		
+		Usuario user= new Usuario(resultado.getFirst().get(0), resultado.getFirst().get(1)); 
+		
+		return user;
+		
 	}
 }
