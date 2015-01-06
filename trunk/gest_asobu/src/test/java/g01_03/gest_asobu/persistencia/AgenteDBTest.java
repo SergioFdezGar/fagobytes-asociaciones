@@ -12,21 +12,21 @@ public class AgenteDBTest extends TestCase{
 
 
 	@Test
-	public void testGetAgente() throws Exception {
+	public void test01GetAgente() throws Exception {
 		AgenteDB mInstancia = AgenteDB.getAgente();
 		//
 		assertTrue(mInstancia!=null);
 	}
 
-	public void testInsert() throws SQLException, Exception{
+	public void test02Insert() throws SQLException, Exception{
 		AgenteDB mInstancia = AgenteDB.getAgente();
-		String SQL_insert_1="INSERT INTO Usuario VALUES ('Prueba13', '123')";
+		String SQL_insert_1="INSERT INTO `Usuario` (`nombre`,`password`) VALUES ('Prueba13', '123')";
 		int esperado=1;
 		int obtenido=mInstancia.insert(SQL_insert_1);
 		assertTrue(esperado==obtenido);
 	}
 
-	public void testInsert2() throws Exception{
+	public void test03Insert2() throws Exception{
 		AgenteDB mInstancia = AgenteDB.getAgente();
 		String SQL_insert_1="hola pepe";
 		try{
@@ -37,15 +37,15 @@ public class AgenteDBTest extends TestCase{
 		}
 	}
 
-	public void testUpdate() throws SQLException, Exception{
+	public void test04Update() throws SQLException, Exception{
 		AgenteDB mInstancia = AgenteDB.getAgente();
-		String SQL_insert_1="UPDATE Usuario SET nombre='TodoRisis' ,password ='holiiiiXD' WHERE nombre='Prueba13'";
+		String SQL_insert_1="UPDATE `Usuario` SET `nombre`='TodoRisis', `password`='holiiiiXD' WHERE `nombre`='Prueba13'";
 		int esperado=1;
 		int obtenido=mInstancia.update(SQL_insert_1);
 		assertTrue(esperado==obtenido);
 	}
 	
-	public void testSelect1() throws Exception{
+	public void test05Select1() throws Exception{
 		AgenteDB mInstancia = AgenteDB.getAgente();
 		String SQL_insert_1="INSERT INTO Usuario VALUES ('Prueba', '123')";
 		String SQL_select_1="SELECT * FROM Usuario WHERE nombre='Prueba'";
@@ -59,7 +59,7 @@ public class AgenteDBTest extends TestCase{
 
 	}
 
-	public void testSelect2() throws Exception{
+	public void test06Select2() throws Exception{
 		AgenteDB mInstancia= AgenteDB.getAgente();
 		String SQL_insert_1="INSERT INTO personad VALUES (1053, 'pepa', 'contra')";
 		String SQL_select_1="SELECCIONO TODO;";
@@ -72,7 +72,7 @@ public class AgenteDBTest extends TestCase{
 
 	}
 	
-	public void testDelete() throws SQLException, Exception{
+	public void test07Delete() throws SQLException, Exception{
 		AgenteDB mInstancia = AgenteDB.getAgente();
 		String SQL_insert_1="DELETE FROM Usuario WHERE nombre='Prueba'";
 		int esperado=1;

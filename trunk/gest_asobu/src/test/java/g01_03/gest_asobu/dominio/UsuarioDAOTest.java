@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 
 public class UsuarioDAOTest extends TestCase{
 
-	 public void testAutenticar() throws Exception {
+	 public void test01Autenticar() throws Exception {
 		 UsuarioDAO gesper;
          boolean prueba=true;
         	 	 gesper = new UsuarioDAO();
@@ -16,7 +16,7 @@ public class UsuarioDAOTest extends TestCase{
                  
 	 }
  
-	 public void testAutenticar2() throws Exception{
+	 public void test02Autenticar2() throws Exception{
 		 	 UsuarioDAO gesper;
 	         boolean prueba=true;
 	
@@ -25,7 +25,7 @@ public class UsuarioDAOTest extends TestCase{
 	                 assertFalse(prueba);
 	 }
 	 
-	 public void testAutenticar3() throws Exception{
+	 public void test03Autenticar3() throws Exception{
 	 	 UsuarioDAO gesper;
 	     boolean prueba=true;
 	
@@ -35,7 +35,7 @@ public class UsuarioDAOTest extends TestCase{
 	             assertTrue(prueba);
 	}
 	 
-	 public void testAgregar() throws Exception {
+	 public void test04Agregar() throws Exception {
 		 UsuarioDAO gesper;
 		 Usuario user= new Usuario("prueba", "123");
 	     boolean prueba=true;
@@ -46,7 +46,7 @@ public class UsuarioDAOTest extends TestCase{
 	
 	}
 	 
-	 public void testEliminar1() throws Exception {
+	 public void test05Eliminar1() throws Exception {
 		 UsuarioDAO gesper;
 		 Usuario user= new Usuario("prueba", "123");
 	     boolean prueba=true;
@@ -57,7 +57,7 @@ public class UsuarioDAOTest extends TestCase{
 	
 	}
 	 
-	 public void testModificar() throws Exception {
+	 public void test06Modificar() throws Exception {
 		 UsuarioDAO gesper;
 		 Usuario user= new Usuario("prueba", "123");
 		 Usuario user2= new Usuario("prueba2", "456");
@@ -69,7 +69,7 @@ public class UsuarioDAOTest extends TestCase{
 	
 	} 
 	 
-	public void testEliminar2() throws Exception {
+	public void test07Eliminar2() throws Exception {
 		 UsuarioDAO gesper;
 		 Usuario user= new Usuario("prueba2", "456");
 	     boolean prueba=true;
@@ -81,7 +81,7 @@ public class UsuarioDAOTest extends TestCase{
 	}
 	 
 	 
-	 public void testModificar2() throws Exception {
+	 public void test08Modificar2() throws Exception {
 		 UsuarioDAO gesper;
 		 Usuario user= new Usuario("prueba", "123");
 	     boolean prueba=true;
