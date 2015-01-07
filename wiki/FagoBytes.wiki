@@ -96,9 +96,9 @@ Estamos presentes en:
 
 ||<a href="https://docs.google.com/file/d/0B5ilPjJKZvByZXlIZjVWT0Q1VFk">Plan de Mantenimiento</a>||
 
-||<a href="https://docs.google.com/file/d/0B4HlLGjZ8DLCcE9Dc21iNjNKcE0">Informe sobre el Mantenimiento</a>||
+||<a href="https://docs.google.com/file/d/0B4HlLGjZ8DLCa1J3bW1uVjVOYU0">Informe sobre el Mantenimiento</a>||
 
-||<a href="https://docs.google.com/file/d/0B4HlLGjZ8DLCM0dtNzFnempJVlU">Pruebas</a>||
+||<a href="https://docs.google.com/file/d/0B4HlLGjZ8DLCRHVfTy1VS2poVlU">Pruebas</a>||
 
 ------------------------------------------------------------------------
 = Tutorial SVN =
