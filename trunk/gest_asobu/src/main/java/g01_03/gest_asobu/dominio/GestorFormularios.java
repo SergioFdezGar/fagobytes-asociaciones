@@ -1,8 +1,5 @@
 package g01_03.gest_asobu.dominio;
 
-import java.sql.SQLException;
-import java.util.LinkedList;
-
 public class GestorFormularios {
 	private static DatosFomDAO DatosFormDao=null;
 	

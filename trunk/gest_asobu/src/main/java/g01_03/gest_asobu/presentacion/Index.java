@@ -41,11 +41,7 @@ import java.awt.CardLayout;
 
 import javax.swing.JList;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -105,12 +101,8 @@ public class Index {
 	private JMenuBar menuBar;
 	private JPanel panelMenu;
 	private JPanel panelIndex;
-	private JButton btnCerrarSesion;
-	private JLabel lblConectado;
 	private JLabel lblLogotipo;
 	private JMenu mnArchivo;
-	private JMenu mnAyuda;
-	private JButton btnAtras;
 	private JButton btnHome;
 	private JPanel panelAtras;
 	private JPanel panelHome;
@@ -158,16 +150,8 @@ public class Index {
 	private JScrollPane spFotoUsuario;
 	private JPanel panelContenedor;
 	private JLabel lblMiembrosIndex;
-	private JButton btnUsuario;
 	private JMenuItem mntmCerrarSesion;
 	private JMenuItem mntmSalir;
-	private JMenuItem mntmManualUsuario;
-	private JMenuItem mntmAyuda;
-	private JMenu mnIrA;
-	private JMenuItem mntmIrAInicio;
-	private JMenuItem mntmIrAParticipantes;
-	private JMenuItem mntmIrAUsuarios;
-	private JMenuItem mntmIrAPerfil;
 	
 	
 	private JScrollPane spMiembro;
@@ -182,7 +166,6 @@ public class Index {
 	private JLabel lblTituloBuscarUsuario;
 	private JPanel panelDatosUsuario;
 	private JLabel lblFotoUsuario;
-	private JMenuItem mntmAcercaDe;
 	private JLabel lblFotoMiembro;
 	private JButton btnGuardarUsuarioUsuario;
 	private JButton btnEliminarUsuarioUsuario;
@@ -242,6 +225,7 @@ public class Index {
 		frmIndex.setIconImage(Toolkit.getDefaultToolkit().getImage(Index.class.getResource("/g01_03/gest_asobu/recursos/FavIcon.png")));
 		frmIndex.setBounds(100, 100, 1243, 706);
 		frmIndex.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmIndex.setLocationRelativeTo (null);
 		{
 			menuBar = new JMenuBar();
 			frmIndex.setJMenuBar(menuBar);
@@ -249,7 +233,7 @@ public class Index {
 				mnArchivo = new JMenu("Archivo");
 				menuBar.add(mnArchivo);
 				{
-					mntmCerrarSesion = new JMenuItem("Cerrar sesi�n");
+					mntmCerrarSesion = new JMenuItem("Cerrar sesion");
 					mntmCerrarSesion.setIcon(new ImageIcon(Index.class.getResource("/g01_03/gest_asobu/recursos/cerrarSesion.png")));
 					mntmCerrarSesion.addActionListener(new MntmCerrarSesionActionListener());
 					mnArchivo.add(mntmCerrarSesion);
@@ -261,57 +245,6 @@ public class Index {
 					mntmSalir.setMnemonic('S');
 					mntmSalir.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 					mnArchivo.add(mntmSalir);
-				}
-			}
-			{
-				mnIrA = new JMenu("Ir a...");
-				menuBar.add(mnIrA);
-				{
-					mntmIrAInicio = new JMenuItem("Inicio");
-					mntmIrAInicio.setIcon(new ImageIcon(Index.class.getResource("/g01_03/gest_asobu/recursos/home-26.png")));
-					mntmIrAInicio.addActionListener(new MiIndexActionListener());
-					mnIrA.add(mntmIrAInicio);
-				}
-				{
-					mntmIrAParticipantes = new JMenuItem("Participantes");
-					mntmIrAParticipantes.setIcon(new ImageIcon(Index.class.getResource("/g01_03/gest_asobu/recursos/participante.png")));
-					mntmIrAParticipantes.addActionListener(new MiMiembroActionListener());
-					mnIrA.add(mntmIrAParticipantes);
-				}
-				{
-					mntmIrAUsuarios = new JMenuItem("Usuarios");
-					mntmIrAUsuarios.setIcon(new ImageIcon(Index.class.getResource("/g01_03/gest_asobu/recursos/admin.png")));
-					mntmIrAUsuarios.addActionListener(new MiUsuarioActionListener());
-					mnIrA.add(mntmIrAUsuarios);
-				}
-				{
-					mntmIrAPerfil = new JMenuItem("Perfil");
-					mntmIrAPerfil.setIcon(new ImageIcon(Index.class.getResource("/g01_03/gest_asobu/recursos/admin.png")));
-					mntmIrAPerfil.addActionListener(new MiAdminActionListener());
-					mntmIrAPerfil.setActionCommand("Perfil");
-					mnIrA.add(mntmIrAPerfil);
-				}
-			}
-			{
-				mnAyuda = new JMenu("Ayuda");
-				menuBar.add(mnAyuda);
-				{
-					mntmManualUsuario = new JMenuItem("Manual de Usuario");
-					mntmManualUsuario.setIcon(new ImageIcon(Index.class.getResource("/g01_03/gest_asobu/recursos/manual.png")));
-					mntmManualUsuario.addActionListener(new MntmManualUsuarioActionListener());
-					mnAyuda.add(mntmManualUsuario);
-				}
-				{
-					mntmAyuda = new JMenuItem("Ayuda");
-					mntmAyuda.setIcon(new ImageIcon(Index.class.getResource("/g01_03/gest_asobu/recursos/ayuda.png")));
-					mntmAyuda.addActionListener(new MntmAcercaDeActionListener());
-					mnAyuda.add(mntmAyuda);
-					mntmAyuda.setMnemonic('A');
-				}
-				{
-					mntmAcercaDe = new JMenuItem("Acerca de...");
-					mntmAcercaDe.setIcon(new ImageIcon(Index.class.getResource("/g01_03/gest_asobu/recursos/acercade.png")));
-					mnAyuda.add(mntmAcercaDe);
 				}
 			}
 		}
@@ -1075,19 +1008,17 @@ public class Index {
 				gbl_panelAtras.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 				panelAtras.setLayout(gbl_panelAtras);
 				{
-					btnAtras = new JButton("");
-					btnAtras.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
+					btnHome = new JButton("");
+					GridBagConstraints gbc_btnHome = new GridBagConstraints();
+					gbc_btnHome.gridx = 0;
+					gbc_btnHome.gridy = 0;
+					panelAtras.add(btnHome, gbc_btnHome);
+					btnHome.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent arg0) {
 						}
 					});
-					btnAtras.addMouseListener(new BtnAtrasMouseListener());
-					btnAtras.setAlignmentX(Component.CENTER_ALIGNMENT);
-					GridBagConstraints gbc_btnAtras = new GridBagConstraints();
-					gbc_btnAtras.gridx = 0;
-					gbc_btnAtras.gridy = 0;
-					panelAtras.add(btnAtras, gbc_btnAtras);
-					btnAtras.setHorizontalTextPosition(SwingConstants.CENTER);
-					btnAtras.setIcon(new ImageIcon(Index.class.getResource("/g01_03/gest_asobu/recursos/left_circular-26.png")));
+					btnHome.addActionListener(new MiIndexActionListener());
+					btnHome.setIcon(new ImageIcon(Index.class.getResource("/g01_03/gest_asobu/recursos/home-26.png")));
 				}
 			}
 			{
@@ -1104,19 +1035,6 @@ public class Index {
 				gbl_panelHome.columnWeights = new double[]{0.0, Double.MIN_VALUE};
 				gbl_panelHome.rowWeights = new double[]{0.0, Double.MIN_VALUE};
 				panelHome.setLayout(gbl_panelHome);
-				{
-					btnHome = new JButton("");
-					btnHome.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent arg0) {
-						}
-					});
-					btnHome.addActionListener(new MiIndexActionListener());
-					GridBagConstraints gbc_btnHome = new GridBagConstraints();
-					gbc_btnHome.gridx = 0;
-					gbc_btnHome.gridy = 0;
-					panelHome.add(btnHome, gbc_btnHome);
-					btnHome.setIcon(new ImageIcon(Index.class.getResource("/g01_03/gest_asobu/recursos/home-26.png")));
-				}
 			}
 			{
 				lblLogotipo = new JLabel("");
@@ -1126,36 +1044,6 @@ public class Index {
 				gbc_lblLogotipo.gridy = 0;
 				panelMenu.add(lblLogotipo, gbc_lblLogotipo);
 			}
-			{
-				{
-					lblConectado = new JLabel("Conectado:");
-					lblConectado.setAlignmentX(Component.RIGHT_ALIGNMENT);
-					GridBagConstraints gbc_lblConectado = new GridBagConstraints();
-					gbc_lblConectado.fill = GridBagConstraints.VERTICAL;
-					gbc_lblConectado.insets = new Insets(0, 0, 0, 5);
-					gbc_lblConectado.gridx = 3;
-					gbc_lblConectado.gridy = 0;
-					panelMenu.add(lblConectado, gbc_lblConectado);
-				}
-				{
-					btnUsuario = new JButton("");
-					btnUsuario.setBorder(null);
-					btnUsuario.addActionListener(new MiAdminActionListener());
-					GridBagConstraints gbc_btnUsuario = new GridBagConstraints();
-					gbc_btnUsuario.fill = GridBagConstraints.BOTH;
-					gbc_btnUsuario.insets = new Insets(0, 0, 0, 5);
-					gbc_btnUsuario.gridx = 4;
-					gbc_btnUsuario.gridy = 0;
-					panelMenu.add(btnUsuario, gbc_btnUsuario);
-				}
-			}
-			btnCerrarSesion = new JButton("Cerrar Sesión");
-			btnCerrarSesion.addMouseListener(new BtnCerrarSesionMouseListener());
-			btnCerrarSesion.setAlignmentX(Component.RIGHT_ALIGNMENT);
-			GridBagConstraints gbc_btnCerrarSesion = new GridBagConstraints();
-			gbc_btnCerrarSesion.gridx = 5;
-			gbc_btnCerrarSesion.gridy = 0;
-			panelMenu.add(btnCerrarSesion, gbc_btnCerrarSesion);
 		}
 		
 	}
@@ -1170,27 +1058,6 @@ public class Index {
 
 	public void setFrame(JFrame frame) {
 		this.frmIndex = frame;
-	}
-	
-	//PANEL MENU
-	
-	private class BtnAtrasMouseListener extends MouseAdapter {
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			
-		}
-	}
-		
-	private class BtnCerrarSesionMouseListener extends MouseAdapter {
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			try {
-				new Login().getFrame().setVisible(true);
-			} catch (Exception e1) {
-				JOptionPane.showMessageDialog(null, e1);
-			}
-			frmIndex.setVisible(false);
-		}
 	}
 		
 	//PANEL INDEX
@@ -1442,15 +1309,6 @@ public class Index {
 			System.exit(0);
 		}
 	}
-	
-	private class MntmManualUsuarioActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-		}
-	}
-	private class MntmAcercaDeActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-		}
-	}
 
 	//MIS OYENTES
 		
@@ -1477,13 +1335,6 @@ public class Index {
 			cl.show(getPanelContenedor(), "BuscarUsuario");
 			modeloListaUsuario.removeAllElements();
 			actualizarUsuarios();
-		}
-	}
-	
-	private class MiAdminActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			CardLayout cl = (CardLayout)(getPanelContenedor().getLayout());
-			cl.show(getPanelContenedor(), "Admin");
 		}
 	}
 		
@@ -1611,10 +1462,8 @@ public class Index {
 			
 			if(es_modificacion){
 				gestMiembros.modificar(datos);
-				JOptionPane.showMessageDialog(null, "Modificado Correctamente");
 			}else{
-				gestMiembros.agregar(datos);
-				JOptionPane.showMessageDialog(null, "Guardado Correctamente");					
+				gestMiembros.agregar(datos);				
 			}
 
 		}catch(Exception e){
@@ -1679,10 +1528,8 @@ public class Index {
 
 				if(es_modificacion){
 					gestUsuarios.modificar(datos);
-					JOptionPane.showMessageDialog(null, "Modificado Correctamente");
 				}else{
-					gestUsuarios.agregar(datos);
-					JOptionPane.showMessageDialog(null, "Guardado Correctamente");					
+					gestUsuarios.agregar(datos);					
 				}
 			}catch(Exception e)	{
 				
