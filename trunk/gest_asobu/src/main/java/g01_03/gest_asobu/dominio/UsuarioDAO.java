@@ -17,9 +17,16 @@ public class UsuarioDAO {
 	private static AgenteDB agente=null;
 	private static LinkedList<Usuario> lista_usuarios= new LinkedList<Usuario>();
 	
+	private int total_paginas;
+	private int pagina_actual;
+	private int tamanio_pagina;
+	
 	public UsuarioDAO() throws Exception  {
 		//Conectamos con la base de datos
 		agente=AgenteDB.getAgente();
+		total_paginas=0;
+		pagina_actual=1;
+		tamanio_pagina= numUsuarios();
 		
 	}
 	
@@ -29,7 +36,51 @@ public class UsuarioDAO {
 	        return myInstance;
 	    }
 
-	 public boolean autenticar(String user_name, String pass){
+	 
+	 
+	 /**
+	 * @return the total_paginas
+	 */
+	public int getTotal_paginas() {
+		return total_paginas;
+	}
+
+	/**
+	 * @param total_paginas the total_paginas to set
+	 */
+	public void setTotal_paginas(int total_paginas) {
+		this.total_paginas = total_paginas;
+	}
+
+	/**
+	 * @return the pagina_actual
+	 */
+	public int getPagina_actual() {
+		return pagina_actual;
+	}
+
+	/**
+	 * @param pagina_actual the pagina_actual to set
+	 */
+	public void setPagina_actual(int pagina_actual) {
+		this.pagina_actual = pagina_actual;
+	}
+
+	/**
+	 * @return the tamanio_pagina
+	 */
+	public int getTamanio_pagina() {
+		return tamanio_pagina;
+	}
+
+	/**
+	 * @param tamanio_pagina the tamanio_pagina to set
+	 */
+	public void setTamanio_pagina(int tamanio_pagina) {
+		this.tamanio_pagina = tamanio_pagina;
+	}
+
+	public boolean autenticar(String user_name, String pass){
 		 LinkedList<Vector<String>> resultados=null;
 		 boolean b=false;
 		 
@@ -76,8 +127,8 @@ public class UsuarioDAO {
 		 return b;
 	 }
 
-	public Usuario crearMiembro(Vector<String> vector) throws Exception {	
-		Usuario user= new Usuario(vector.get(1), vector.get(2)); 
+	public Usuario crearUsuario(Vector<String> vector) throws Exception {	
+		Usuario user= new Usuario(vector.get(0), vector.get(1)); 
 		return user;
 	}
 	
@@ -164,7 +215,9 @@ public class UsuarioDAO {
 		lista_usuarios= new LinkedList<Usuario>();
 		Usuario aux= null;
 		Vector<String> vec_aux=null;
-		String query ="SELECT * FROM `"+T_USUARIO+"`";
+		int inicio=(getPagina_actual()-1)*getTamanio_pagina();
+		
+		String query ="SELECT * FROM `"+T_USUARIO+"` LIMIT "+ inicio +", "+ getTamanio_pagina();
 		 resultados=agente.select(query);
 
 		 for(int i=0; i<resultados.size();i++){
@@ -174,19 +227,16 @@ public class UsuarioDAO {
 		 }
 	}
 
-	public Usuario crearUsuario(Vector<String> vector) throws SQLException, Exception {
-
-		Usuario user= new Usuario(vector.get(0), vector.get(1)); 
-		
-		return user;
-	}
-
 	public Usuario getUsuario(int i) {
 		return lista_usuarios.get(i);
 	}
 
-	public int numUsuarios() {
-		return lista_usuarios.size();
+	public int numUsuarios() throws SQLException, Exception {
+		int num=0;
+		String query ="SELECT COUNT(`nombre`) AS CUENTA FROM `"+T_USUARIO+"`";
+		num=agente.operation(query);
+		
+		return num;
 	}
 	
 	public Usuario getUsuario(String nombre) throws SQLException, Exception {
@@ -205,5 +255,24 @@ public class UsuarioDAO {
 		
 		return user;
 		
+	}
+
+	public int numUsuariosLista() {
+		return lista_usuarios.size();
+	}
+
+	public int paginar() throws SQLException, Exception {
+		double n= numUsuarios();
+		double paginas= n/getTamanio_pagina();
+		if(Math.floor(paginas)<paginas)paginas++;
+		return (int) paginas;
+	}
+	
+	
+	public boolean accederPagina(int pagina) throws SQLException, Exception {
+		setPagina_actual(pagina);
+		setTotal_paginas(paginar());
+		listar();
+		return true;
 	}
 }

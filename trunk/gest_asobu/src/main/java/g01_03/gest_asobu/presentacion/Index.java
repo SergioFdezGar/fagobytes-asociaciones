@@ -89,14 +89,23 @@ import javax.swing.DefaultComboBoxModel;
 
 
 
+
+
+
 import g01_03.gest_asobu.dominio.*;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 
 
 
 
 public class Index {
-
+	
+	private static final int MAX_PAG_USERS=10;
+	private static final int MAX_PAG_MEMBERS=10;
+	private static int pagina_actual=1;
+	
 	private JFrame frmIndex;
 	private JMenuBar menuBar;
 	private JPanel panelMenu;
@@ -188,6 +197,8 @@ public class Index {
 	private GestorUsuario gestUsuarios= new GestorUsuario();
 	
 	private static boolean es_modificacion=false;
+	private JComboBox cmbPagMiembros;
+	private JComboBox cmbPagUsuarios;
 	
 	/**
 	 * Launch the application.
@@ -383,6 +394,28 @@ public class Index {
 				gbc_btnVerMiembro.gridx = 4;
 				gbc_btnVerMiembro.gridy = 6;
 				panelBuscarMiembro.add(btnVerMiembro, gbc_btnVerMiembro);
+				{
+					cmbPagMiembros = new JComboBox();
+					cmbPagMiembros.addItemListener(new ItemListener() {
+						public void itemStateChanged(ItemEvent arg0) {
+							pagina_actual=cmbPagMiembros.getSelectedIndex()+1;
+							actualizarMiembros(pagina_actual);
+						}
+					});
+					try{
+						cmbPagMiembros.setModel(new DefaultComboBoxModel(paginasMiembros()));
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					cmbPagMiembros.setEditable(false);
+					GridBagConstraints gbc_cmbPagMiembros = new GridBagConstraints();
+					gbc_cmbPagMiembros.insets = new Insets(0, 0, 0, 5);
+					gbc_cmbPagMiembros.fill = GridBagConstraints.HORIZONTAL;
+					gbc_cmbPagMiembros.gridx = 2;
+					gbc_cmbPagMiembros.gridy = 7;
+					panelBuscarMiembro.add(cmbPagMiembros, gbc_cmbPagMiembros);
+				}
 			}
 			panelBuscarUsuario = new JPanel();
 			panelBuscarUsuario.setName("BuscarUsuario");
@@ -475,6 +508,28 @@ public class Index {
 			gbc_btnVerUsuario.gridx = 4;
 			gbc_btnVerUsuario.gridy = 6;
 			panelBuscarUsuario.add(btnVerUsuario, gbc_btnVerUsuario);
+			{
+				cmbPagUsuarios = new JComboBox();
+				cmbPagUsuarios.addItemListener(new ItemListener() {
+					public void itemStateChanged(ItemEvent e) {
+						pagina_actual=cmbPagUsuarios.getSelectedIndex()+1;
+						actualizarUsuarios(pagina_actual);
+					}
+				});
+				try{
+					cmbPagUsuarios.setModel(new DefaultComboBoxModel(paginasUsuarios()));
+				} catch (Exception e) {
+					// TODO Auto-generated catch blockçç
+					e.printStackTrace();
+				}
+				cmbPagUsuarios.setEditable(false);
+				GridBagConstraints gbc_cmbPagUsuarios = new GridBagConstraints();
+				gbc_cmbPagUsuarios.insets = new Insets(0, 0, 0, 5);
+				gbc_cmbPagUsuarios.fill = GridBagConstraints.HORIZONTAL;
+				gbc_cmbPagUsuarios.gridx = 2;
+				gbc_cmbPagUsuarios.gridy = 7;
+				panelBuscarUsuario.add(cmbPagUsuarios, gbc_cmbPagUsuarios);
+			}
 			{
 				panelMiembro = new JPanel();
 				panelMiembro.setName("Miembro");
@@ -1048,6 +1103,8 @@ public class Index {
 		
 	}
 
+
+
 	public JPanel getPanelContenedor() {
 		return panelContenedor;
 	}
@@ -1104,7 +1161,7 @@ public class Index {
 				if (n==0){
 					eliminarMiembro(listMiembro.getSelectedIndex());
 					modeloListaMiembro.removeAllElements();
-					actualizarMiembros();
+					actualizarMiembros(pagina_actual);
 				}
 			}
 		}
@@ -1172,7 +1229,7 @@ public class Index {
 					System.out.println(listUsuario.getSelectedIndex());
 					eliminarUsuario(listUsuario.getSelectedIndex());
 					modeloListaUsuario.removeAllElements();
-					actualizarUsuarios();
+					actualizarUsuarios(pagina_actual);
 				}
 			}
 		}
@@ -1234,7 +1291,7 @@ public class Index {
 					CardLayout c2 = (CardLayout)(getPanelContenedor().getLayout());
 					c2.show(getPanelContenedor(), "BuscarMiembro");
 					modeloListaMiembro.removeAllElements();
-					actualizarMiembros();
+					actualizarMiembros(pagina_actual);
 				}
 				
 				
@@ -1281,7 +1338,7 @@ public class Index {
 					CardLayout c2 = (CardLayout)(getPanelContenedor().getLayout());
 					c2.show(getPanelContenedor(), "BuscarUsuario");
 					modeloListaUsuario.removeAllElements();
-					actualizarUsuarios();
+					actualizarUsuarios(pagina_actual);
 				}
 				
 			}
@@ -1325,7 +1382,7 @@ public class Index {
 			CardLayout cl = (CardLayout)(getPanelContenedor().getLayout());
 			cl.show(getPanelContenedor(), "BuscarMiembro");
 			modeloListaMiembro.removeAllElements();
-			actualizarMiembros();
+			actualizarMiembros(pagina_actual);
 		}
 	}
 	
@@ -1334,40 +1391,54 @@ public class Index {
 			CardLayout cl = (CardLayout)(getPanelContenedor().getLayout());
 			cl.show(getPanelContenedor(), "BuscarUsuario");
 			modeloListaUsuario.removeAllElements();
-			actualizarUsuarios();
+			actualizarUsuarios(pagina_actual);
 		}
 	}
 		
 	
 	//METODOS
 	
-	public void actualizarMiembros(){
+	public void actualizarMiembros(int pagina){
 		try{
-			int total=gestMiembros.numMiembros();
-			for(int i=0; i<total;i++){
-				modeloListaMiembro.addElement(gestMiembros.getMiembro(i).getDni()
-						+ " " +gestMiembros.getMiembro(i).getNombre()
-						+ " " +gestMiembros.getMiembro(i).getApellidos1()
-						+ " " +gestMiembros.getMiembro(i).getApellidos2());
+			//Accedemos a la pagina
+			if(gestMiembros.accederPagina(pagina)){
+				
+				//Vemos cuantos registros hay en la lista
+				int total=gestMiembros.numMiembrosLista();
+				
+				//Rellenamos la lista
+				modeloListaMiembro.clear();
+				for(int i=0; i<total;i++){
+					modeloListaMiembro.addElement(gestMiembros.getMiembro(i).getDni()
+							+ " " +gestMiembros.getMiembro(i).getNombre()
+							+ " " +gestMiembros.getMiembro(i).getApellidos1()
+							+ " " +gestMiembros.getMiembro(i).getApellidos2());
+				}
+				listMiembro.setModel(modeloListaMiembro);
 			}
-			listMiembro.setModel(modeloListaMiembro);
-			//rs.close();
-			//pst.close();
+			else{
+				JOptionPane.showMessageDialog(null, "No se pudo acceder a la pagina "+ pagina);
+			}
 		}catch(Exception e){
 			System.out.println("ERROR!:"+ e.getMessage());
 			JOptionPane.showMessageDialog(null, e);
 		}
 	}
 	
-	public void actualizarUsuarios(){
+	public void actualizarUsuarios(int pagina){
 		try{
-			int total=gestUsuarios.numUsuarios();
-			for(int i=0; i<total;i++){
-				modeloListaUsuario.addElement(gestUsuarios.getUsuario(i).getUsuario());
+			//Accedemos a la pagina
+			if(gestUsuarios.accederPagina(pagina)){
+				
+				//Vemos cuantos registros hay en la lista
+				int total=gestUsuarios.numUsuariosLista();
+				modeloListaUsuario.clear();
+				//Rellenamos la lista
+				for(int i=0; i<total;i++){
+					modeloListaUsuario.addElement(gestUsuarios.getUsuario(i).getUsuario());
+				}
+				listMiembro.setModel(modeloListaUsuario);
 			}
-			listMiembro.setModel(modeloListaUsuario);
-			//rs.close();
-			//pst.close();
 		}catch(Exception e){
 			System.out.println("ERROR!:"+ e.getMessage());
 			JOptionPane.showMessageDialog(null, e);
@@ -1473,7 +1544,7 @@ public class Index {
 	}
 	
 
-	public boolean eliminarMiembro(int index){  //SI FUNCIONA pero no actualiza
+	public boolean eliminarMiembro(int index){ 
 		boolean correcto=false;
 		try {
 			gestMiembros.getMiembro(index);
@@ -1551,7 +1622,7 @@ public class Index {
 		frmtdtxtfldContrasena.setText(" ");
 	}
 	
-	public boolean eliminarUsuario(int index){  //SI FUNCIONA pero no actualiza
+	public boolean eliminarUsuario(int index){  
 		boolean correcto=false;
 		try {
 			gestUsuarios.getUsuario(index);
@@ -1587,7 +1658,27 @@ public class Index {
 		return correcto;
 	}
 	
+	private String[] paginasMiembros() {
+		int max=gestMiembros.getMaximo_paginas();
+		String [] paginas= new String[max];
+		
+		for(int i=1; i<=max; i++){
+			paginas[i-1]="Pagina "+i;
+		}
+		pagina_actual=1;
+		return paginas;
+	}
 	
+	private String[] paginasUsuarios() {
+		int max=gestUsuarios.getMaximo_paginas();
+		String [] paginas= new String[max];
+		
+		for(int i=1; i<=max; i++){
+			paginas[i-1]="Pagina "+i;
+		}
+		pagina_actual=1;
+		return paginas;
+	}
 		
 	
 }

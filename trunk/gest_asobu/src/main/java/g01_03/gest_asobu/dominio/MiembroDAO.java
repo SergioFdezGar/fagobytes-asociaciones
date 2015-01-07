@@ -20,10 +20,17 @@ public class MiembroDAO {
 	private static AgenteDB agente=null;
 	private static LinkedList<Miembro> lista_miembros= new LinkedList<Miembro>();
 	
+	private int total_paginas;
+	private int pagina_actual;
+	private int tamanio_pagina;
+	
+	
 	public MiembroDAO() throws Exception  {
 		//Conectamos con la base de datos
 		agente=AgenteDB.getAgente();
-		
+		total_paginas=0;
+		pagina_actual=1;
+		tamanio_pagina= numMiembros();
 	}
 	
 	 public static MiembroDAO getInstance() throws Exception{
@@ -32,7 +39,49 @@ public class MiembroDAO {
 	        return myInstance;
 	    }
 
-	 public boolean agregar(Miembro member){
+	 /**
+	 * @return the total_paginas
+	 */
+	public int getTotal_paginas() {
+		return total_paginas;
+	}
+
+	/**
+	 * @param total_paginas the total_paginas to set
+	 */
+	public void setTotal_paginas(int total_paginas) {
+		this.total_paginas = total_paginas;
+	}
+
+	/**
+	 * @return the pagina_actual
+	 */
+	public int getPagina_actual() {
+		return pagina_actual;
+	}
+
+	/**
+	 * @param pagina_actual the pagina_actual to set
+	 */
+	public void setPagina_actual(int pagina_actual) {
+		this.pagina_actual = pagina_actual;
+	}
+
+	/**
+	 * @return the tamanio_pagina
+	 */
+	public int getTamanio_pagina() {
+		return tamanio_pagina;
+	}
+
+	/**
+	 * @param tamanio_pagina the tamanio_pagina to set
+	 */
+	public void setTamanio_pagina(int tamanio_pagina) {
+		this.tamanio_pagina = tamanio_pagina;
+	}
+
+	public boolean agregar(Miembro member){
 		 boolean b=false;
 		 String valores= member.toString();
 		 
@@ -139,31 +188,7 @@ public class MiembroDAO {
 		 
 		 return b;
 	}
-	 
-//	private String crearValores(LinkedList<String> datos) {
-//		
-//		String cadena="";
-//		//Desde DNI hasta tipo_via
-//		for(int i=0; i<7;i++){
-//			cadena+="`"+datos.get(i)+"`,";
-//		}
-//		
-//		cadena+=datos.get(7)+",";  //Numero
-//		cadena+="`"+datos.get(8)+"`,"; //Escalera
-//		cadena+=datos.get(9)+",";//Piso
-//		cadena+="`"+datos.get(10)+"`,";//Puerta
-//		cadena+=datos.get(11)+",";//Cod_postal
-//		
-//		//Desde provincia hasta tlfn
-//		for(int i=12; i<15;i++){
-//			cadena+="`"+datos.get(i)+"`,";
-//		}
-//		
-//		cadena+="`"+datos.get(15)+"`,";//email
-//		
-//		return cadena;
-//	}
-	
+	 	
 	private String diferencias(Miembro actual, Miembro other) {
 		String cadena="";
 		boolean corregir=true;	
@@ -249,12 +274,14 @@ public class MiembroDAO {
 	}
 
 
-	public void listar() throws SQLException, Exception {		 
+	private void listar() throws SQLException, Exception {		 
 		LinkedList<Vector<String>> resultados=null;
 		lista_miembros= new LinkedList<Miembro>();
 		Miembro aux= null;
 		Vector<String> vec_aux=null;
-		String query ="SELECT * FROM `"+T_ASOCIACION+"`";
+		int inicio=(getPagina_actual()-1)*getTamanio_pagina();
+		
+		String query ="SELECT * FROM `"+T_ASOCIACION+"` LIMIT "+ inicio +", "+ getTamanio_pagina();
 		 resultados=agente.select(query);
 
 		 for(int i=0; i<resultados.size();i++){
@@ -272,16 +299,19 @@ public class MiembroDAO {
 		return lista_miembros.get(index);
 	}
 
-	public int numMiembros() throws SQLException, Exception {
-//		LinkedList<Vector<String>> resultado=null;
-//		int num=0;
-//		String query ="SELECT COUNT(*) FROM `"+T_ASOCIACION+"`";
-//		num=agente.update(query);
-		//num= Integer.parseInt(resultado.getFirst().firstElement());
+	public int numMiembrosLista() throws SQLException, Exception {
 		return lista_miembros.size();
 	}
 	
 
+	public int numMiembros() throws SQLException, Exception {
+		int num=0;
+		String query ="SELECT COUNT(`nombre`) AS CUENTA FROM `"+T_ASOCIACION+"`";
+		num=agente.operation(query);
+		
+		return num;
+	}
+	
 	private Miembro recuperarMiembro(String dni) throws SQLException, Exception {		 
 		LinkedList<Vector<String>> resultado=null;
 
@@ -313,4 +343,20 @@ public class MiembroDAO {
 		
 		return member;
 	}
+
+	public int paginar() throws SQLException, Exception {
+		double n= numMiembros();
+		double paginas= n/getTamanio_pagina();
+		if(Math.floor(paginas)<paginas)paginas++;
+		return (int) paginas;
+	}
+
+	public boolean accederPagina(int pagina) throws SQLException, Exception {
+		setPagina_actual(pagina);
+		setTotal_paginas(paginar());
+		listar();
+		return true;
+	}
+	
+	
 }
