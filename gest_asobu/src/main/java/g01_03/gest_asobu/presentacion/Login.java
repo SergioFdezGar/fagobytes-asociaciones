@@ -15,33 +15,15 @@ import java.awt.Color;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.JSplitPane;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-import javax.swing.JComboBox;
-
-import java.awt.Cursor;
-import java.awt.Desktop;
 import java.awt.Font;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import javax.swing.DefaultComboBoxModel;
-
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
 import java.awt.SystemColor;
-import java.io.File;
-import java.io.IOException;
 
 
 public class Login {
@@ -181,6 +163,7 @@ public class Login {
 		}
 	}
 	private class MiEntrarActionListener implements ActionListener {
+		@SuppressWarnings("deprecation")
 		public void actionPerformed(ActionEvent arg0) {
 			String name_user=txtUser.getText();
 			String pass=passwordField.getText();
@@ -190,12 +173,12 @@ public class Login {
 				autenticado=gest_user.autenticar(name_user, pass);
 				
 				if(autenticado){
-					JOptionPane.showMessageDialog(null, "Usuario y contrase�a correcto");
+					JOptionPane.showMessageDialog(null, "Usuario y pass correctos");
 					new Index().getFrame().setVisible(true);
 					frmLogin.setVisible(false);				
 				}
 				else{
-					JOptionPane.showMessageDialog(null, "Usuario y contrase�a no correcto");
+					JOptionPane.showMessageDialog(null, "Usuario y pass no correctos");
 				}
 				
 			}catch(Exception e){
