@@ -59,6 +59,17 @@ public class AgenteDB{
         desconectar();
         return dats;
     }
+    
+    public int operation(String SQL) throws SQLException, Exception{
+        conectar();
+        int cuenta=0;
+        PreparedStatement ps = mBD.prepareStatement(SQL);
+        ResultSet info = ps.executeQuery();
+        if(info.next()) cuenta=info.getInt(1);
+        ps.close();
+        desconectar();
+        return cuenta;
+    }
 
     private Vector<String> get_valor(ResultSet info, ResultSetMetaData info_m) throws SQLException{
         Vector<String> result = new Vector<String>();
